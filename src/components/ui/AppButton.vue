@@ -17,6 +17,9 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  customTag: {
+    type: String,
+  },
   to: {
     type: [String, Object] as PropType<string | { name: string }>,
     default: null,
@@ -26,7 +29,11 @@ const props = defineProps({
 const emits = defineEmits(["click"]);
 
 const tag = computed(() => {
-  return props.to ? "router-link" : "button";
+  return props.customTag
+    ? props.customTag
+    : props.to
+    ? "router-link"
+    : "button";
 });
 
 const clickHandler = (event: MouseEvent) => {
@@ -40,7 +47,7 @@ const clickHandler = (event: MouseEvent) => {
     :is="tag"
     class="base-btn btn"
     :type="type"
-    :class="{ primary, disabled }"
+    :class="{ primary, disabled, interactive: !disabled }"
     :to="to"
     :disabled="disabled"
     @click="clickHandler"
@@ -51,6 +58,7 @@ const clickHandler = (event: MouseEvent) => {
 
 <style lang="scss" scoped>
 @import "../../assets/styles/colors";
+@import "../../assets/styles/animations";
 
 /**
  * 1. Each browser sets padding and margin in its own way - reset to zero.
@@ -101,11 +109,13 @@ const clickHandler = (event: MouseEvent) => {
   text-overflow: ellipsis;
   transition: opacity $transition-delay;
 
-  background-color: $white;
+  background-color: transparent;
 
-  @media (hover: hover) {
-    &:hover {
-      opacity: 0.7;
+  &.interactive {
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 
