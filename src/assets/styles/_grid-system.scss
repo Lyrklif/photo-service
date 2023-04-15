@@ -1,0 +1,23 @@
+@import "breakpoints";
+
+
+
+.container {
+  max-width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  @include md-up {
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include lg-up {
+    max-width: 70vw;
+  }
+
+  @include xxl-up {
+    max-width: rem(1478px);
+  }
+}
