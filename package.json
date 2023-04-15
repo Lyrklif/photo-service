@@ -1,0 +1,39 @@
+{
+  "name": "photo-service",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "homepage": "https://lyrklif.github.io/photo-service/",
+  "scripts": {
+    "dev": "vite --host --base /",
+    "build": "vue-tsc && vite build --base /photo-service/",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
+    "eslint": "8.22.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "gh-pages": "^5.0.0",
+    "normalize.css": "^8.0.1",
+    "prettier": "^2.8.4",
+    "stylelint": "^15.2.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-recommended-vue": "^1.4.0",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vue": "^3.2.45",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.12",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "sass": "^1.59.2",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "vue-tsc": "^1.0.24"
+  }
+}
