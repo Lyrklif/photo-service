@@ -33,6 +33,7 @@ body {
 
 a {
   transition: opacity $transition-delay;
+  color: inherit;
 
   @media (hover: hover) {
     &:hover {

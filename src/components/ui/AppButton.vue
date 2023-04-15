@@ -78,7 +78,9 @@ const clickHandler = (event: MouseEvent) => {
 .base-btn {
   position: relative;
 
-  display: inline-block; // 6
+  display: inline-flex; // 6
+  align-items: center;
+  justify-content: center;
   padding: 0; // 1
   margin: 0; // 1
 
@@ -108,7 +110,6 @@ const clickHandler = (event: MouseEvent) => {
   overflow: hidden;
   text-overflow: ellipsis;
   transition: opacity $transition-delay;
-
   background-color: transparent;
 
   &.interactive {
