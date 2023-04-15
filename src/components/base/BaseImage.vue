@@ -31,7 +31,7 @@ const loadHandler = () => {
 </template>
 
 <style lang="scss" scoped>
-@import "src/assets/styles/_variables.scss";
+@import "../../assets/styles/animations";
 
 .image {
   opacity: 0;

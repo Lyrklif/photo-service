@@ -50,7 +50,7 @@ const clickHandler = (event: MouseEvent) => {
 </template>
 
 <style lang="scss" scoped>
-@import "src/assets/styles/_variables.scss";
+@import "../../assets/styles/colors";
 
 /**
  * 1. Each browser sets padding and margin in its own way - reset to zero.
