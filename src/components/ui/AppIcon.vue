@@ -31,5 +31,6 @@ export default defineComponent({
   --fill: currentColor;
 
   max-width: 100%;
+  max-height: 100%;
 }
 </style>
