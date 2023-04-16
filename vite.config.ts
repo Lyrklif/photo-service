@@ -11,4 +11,9 @@ export default defineConfig({
       iconDirs: [path.resolve(process.cwd(), "src/assets/svg-sprite")],
     }),
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
 });
