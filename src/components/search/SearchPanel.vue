@@ -1,11 +1,13 @@
 <script lang="ts" setup>
 import SearchBackground from "./SearchBackground.vue";
+import SearchForm from "./SearchForm.vue";
 </script>
 
 <template>
   <div class="search-panel">
-    <div class="container">Search</div>
-
+    <div class="container">
+      <SearchForm class="form" />
+    </div>
     <SearchBackground />
   </div>
 </template>
@@ -24,6 +26,14 @@ import SearchBackground from "./SearchBackground.vue";
     padding-top: 92px;
     padding-bottom: 92px;
     border-bottom: 16px solid $grey;
+  }
+}
+
+.form {
+  @include md-up() {
+    max-width: 866px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>
