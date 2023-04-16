@@ -29,7 +29,7 @@ const logo = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/grid-system";
+@import "../../../assets/styles/breakpoints";
 
 .logo {
   display: block;

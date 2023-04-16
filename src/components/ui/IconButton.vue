@@ -22,7 +22,7 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/grid-system";
+@import "../../assets/styles/breakpoints";
 
 .text {
   display: none;

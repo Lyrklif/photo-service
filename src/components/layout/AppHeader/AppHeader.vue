@@ -23,7 +23,6 @@ const isMainPage = computed(() => {
 
 <style lang="scss" scoped>
 @import "../../../assets/styles/colors";
-@import "../../../assets/styles/grid-system";
 
 .header {
   background-color: $dark;
