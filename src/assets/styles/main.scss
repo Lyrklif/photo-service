@@ -3,6 +3,11 @@
 @import "_animations.scss";
 @import "_grid-system.scss";
 
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
