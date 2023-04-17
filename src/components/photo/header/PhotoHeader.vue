@@ -9,6 +9,7 @@ defineProps({
   image: { type: String, required: true },
   imageLarge: { type: String, required: true },
   download: { type: String, required: true },
+  liked: { type: Boolean, required: true },
 });
 </script>
 
@@ -21,7 +22,11 @@ defineProps({
       :image="image"
       :imageLarge="imageLarge"
     />
-    <PhotoButtons :downloadName="title" :downloadUrl="download" />
+    <PhotoButtons
+      :downloadName="title"
+      :downloadUrl="download"
+      :liked="liked"
+    />
   </header>
 </template>
 

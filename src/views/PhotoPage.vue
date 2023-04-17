@@ -42,6 +42,7 @@ load();
       :image="photo.user.profile_image.medium"
       :imageLarge="photo.user.profile_image.large"
       :download="photo.links.download"
+      :liked="photo.liked_by_user"
     />
 
     <div class="container">

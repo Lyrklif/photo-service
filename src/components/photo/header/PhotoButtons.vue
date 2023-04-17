@@ -1,15 +1,44 @@
 <script lang="ts" setup>
+import { ref } from "vue";
 import IconButton from "../../ui/IconButton.vue";
+import { computed } from "vue";
+import API from "../../../api/endpoints";
+import { useRoute } from "vue-router";
 
-defineProps({
+const props = defineProps({
   downloadName: { type: String, required: true },
   downloadUrl: { type: String, required: true },
+  liked: { type: Boolean, default: false },
 });
+
+const route = useRoute();
+const isLiked = ref<boolean>(props.liked);
+
+const iconHeart = computed(() => {
+  return isLiked.value ? "heart-fill" : "heart";
+});
+
+async function likeHandler() {
+  try {
+    const method = isLiked.value ? API.unlikePhoto : API.likePhoto;
+
+    await method(`${route.params.id}`);
+    isLiked.value = !isLiked.value;
+  } finally {
+    //
+  }
+}
 </script>
 
 <template>
   <div class="buttons">
-    <IconButton class="button like" icon="heart" />
+    liked: {{ liked }}
+    <IconButton
+      class="button like"
+      :class="{ fill: liked }"
+      :icon="iconHeart"
+      @click="likeHandler"
+    />
 
     <IconButton
       class="button download"
@@ -42,6 +71,10 @@ defineProps({
 .like {
   color: $dark;
   background-color: $white;
+
+  &.fill {
+    color: $primary;
+  }
 }
 
 .download {

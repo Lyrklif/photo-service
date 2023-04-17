@@ -10,7 +10,6 @@ export interface ApiInterface {
   getLikedPhotos: (username?: string) => AxiosPromise<any>;
   likePhoto: (id: string) => AxiosPromise;
   unlikePhoto: (id: string) => AxiosPromise;
-  getPhotoDownloadLink: (id: string) => AxiosPromise<any>;
 }
 
 const API: ApiInterface = {
@@ -31,9 +30,6 @@ const API: ApiInterface = {
   },
   unlikePhoto(id) {
     return instance.delete(`photos/${id}/like`);
-  },
-  getPhotoDownloadLink(id) {
-    return instance.get(`photos/${id}/download`);
   },
 };
 
