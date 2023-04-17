@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import PhotoList from "../components/photo/PhotoList.vue";
+import AppLoader from "../components/ui/AppLoader.vue";
 import { useFavoritesStore } from "../stores/favorites";
 
 const store = useFavoritesStore();
@@ -13,7 +14,8 @@ store.loadFavorites();
     </header>
 
     <div class="container">
-      <PhotoList :list="store.list" class="list" />
+      <AppLoader v-if="store.loading" />
+      <PhotoList v-else :list="store.list" class="list" />
     </div>
   </main>
 </template>

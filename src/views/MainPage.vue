@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import SearchPanel from "../components/search/SearchPanel.vue";
 import PhotoList from "../components/photo/PhotoList.vue";
+import AppLoader from "../components/ui/AppLoader.vue";
 import { usePhotosStore } from "../stores/photos";
 
 const store = usePhotosStore();
@@ -21,7 +22,8 @@ const searchHandler = (text: string = "") => {
 
     <SearchPanel @submit="searchHandler" />
     <div class="container">
-      <PhotoList :list="store.list" class="list" />
+      <AppLoader v-if="store.loading" />
+      <PhotoList v-else :list="store.list" class="list" />
     </div>
   </main>
 </template>

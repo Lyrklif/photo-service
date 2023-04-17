@@ -2,6 +2,7 @@
 import PhotoHeader from "../components/photo/header/PhotoHeader.vue";
 import PhotoFull from "../components/photo/PhotoFull.vue";
 import PhotoBackground from "../components/photo/PhotoBackground.vue";
+import AppLoader from "../components/ui/AppLoader.vue";
 import { useRoute } from "vue-router";
 import { usePhotoStore } from "../stores/photo";
 
@@ -12,7 +13,8 @@ store.loadPhotoData(`${route.params.id}`);
 </script>
 
 <template>
-  <main v-if="store.photo">
+  <AppLoader v-if="store.loading" />
+  <main v-else-if="store.photo">
     <PhotoHeader
       :title="store.photo.alt_description"
       :name="store.photo.user.name"
