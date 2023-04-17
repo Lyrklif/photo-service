@@ -9,8 +9,6 @@ import AppIcon from "./AppIcon.vue";
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/animations";
-
 .loader {
   margin: 30px auto;
   height: 30px;

@@ -2,6 +2,7 @@
 import SearchPanel from "../components/search/SearchPanel.vue";
 import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
+import ScrollTop from "../components/ui/ScrollTop.vue";
 import { usePhotosStore } from "../stores/photos";
 
 const store = usePhotosStore();
@@ -25,6 +26,8 @@ const searchHandler = (text: string = "") => {
       <AppLoader v-if="store.loading" />
       <PhotoList v-else :list="store.list" class="list" />
     </div>
+
+    <ScrollTop />
   </main>
 </template>
 
