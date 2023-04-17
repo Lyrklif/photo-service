@@ -28,11 +28,11 @@ const likeButtonType = computed(() => {
 </script>
 
 <template>
-  <header class="header">
+  <header class="header" :class="{ main: isMainPage }">
     <div class="container">
-      <LogoHeader :is-static="isMainPage" :big="isMainPage" />
+      <LogoHeader :is-static="isMainPage" :big="isMainPage" class="logo" />
 
-      <div>
+      <div class="buttons-wrap">
         <IconButton
           v-if="!isMainPage"
           :to="{ name: PAGE_NAMES.main }"
@@ -45,6 +45,8 @@ const likeButtonType = computed(() => {
           :type="likeButtonType"
           text="Избранное"
           :liked="store.isLiked"
+          class="like"
+          :class="{ main: isMainPage }"
           @click="store.likePhoto"
         />
       </div>
@@ -54,12 +56,23 @@ const likeButtonType = computed(() => {
 
 <style lang="scss" scoped>
 @import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoints";
 
 .header {
   background-color: $dark;
   color: $white;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+
+  &.main {
+    padding-top: 13px;
+    padding-bottom: 13px;
+
+    @include md-up {
+      padding-top: 33px;
+      padding-bottom: 43px;
+    }
+  }
 }
 
 .container {
@@ -69,6 +82,30 @@ const likeButtonType = computed(() => {
 }
 
 .search {
-  margin-right: 20px;
+  @include md-up {
+    margin-right: 18px;
+  }
+}
+.logo {
+  @include md-up {
+    transform: translateY(4px);
+  }
+}
+
+.buttons-wrap {
+  transform: translateX(11px);
+
+  @include md-up {
+    font-size: 20px;
+    transform: translateX(6px);
+  }
+}
+
+.like {
+  &.main {
+    @include lg-up {
+      font-size: 18px;
+    }
+  }
 }
 </style>

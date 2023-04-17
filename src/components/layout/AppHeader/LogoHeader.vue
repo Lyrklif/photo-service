@@ -43,7 +43,7 @@ const logo = computed(() => {
 
   &.big {
     @include lg-up {
-      width: 184px;
+      width: 204px;
       height: 73px;
     }
   }

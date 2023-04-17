@@ -53,6 +53,7 @@ store.loadPhotoData(`${route.params.id}`);
   margin-bottom: 32px;
 
   @include md-up {
+    margin-top: 44px;
     margin-bottom: 40px;
   }
 }

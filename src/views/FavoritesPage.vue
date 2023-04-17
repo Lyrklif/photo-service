@@ -10,7 +10,7 @@ store.loadFavorites();
 <template>
   <main class="page">
     <header class="header">
-      <h1>Избранное</h1>
+      <h1 class="title">Избранное</h1>
     </header>
 
     <div class="container">
@@ -33,14 +33,22 @@ store.loadFavorites();
 .header {
   text-align: center;
   margin-top: 40px;
-  margin-bottom: 40px;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 42px;
+  margin-bottom: 55px;
 
   @include md-up {
     margin-top: 94px;
-    margin-bottom: 94px;
+    margin-bottom: 100px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include md-up {
     font-size: 72px;
     line-height: 84px;
   }

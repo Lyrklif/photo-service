@@ -24,6 +24,7 @@ defineProps({
       :imageLarge="imageLarge"
     />
     <PhotoButtons
+      class="buttons"
       :downloadName="title"
       :downloadUrl="download"
       :liked="liked"
@@ -39,5 +40,13 @@ defineProps({
 .header {
   display: flex;
   justify-content: space-between;
+}
+
+.buttons {
+  margin-top: 4px;
+
+  @include md-up {
+    margin-top: 0;
+  }
 }
 </style>

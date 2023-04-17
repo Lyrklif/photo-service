@@ -34,7 +34,11 @@ const submitHandler = () => {
 .submit {
   background-color: $white;
   height: 70px;
-  width: 70px;
+  width: 90px;
   color: $dark;
+
+  @include lg-up {
+    width: 110px;
+  }
 }
 </style>

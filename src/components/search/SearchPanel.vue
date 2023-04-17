@@ -30,7 +30,7 @@ const submitHandler = (text: string) => {
 
   @include md-up() {
     padding-top: 92px;
-    padding-bottom: 92px;
+    padding-bottom: 90px;
     border-bottom: 16px solid $dark-grey;
   }
 }

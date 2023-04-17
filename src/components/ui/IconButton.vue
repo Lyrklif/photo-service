@@ -31,8 +31,8 @@ const clickHandler = () => {
 @import "../../assets/styles/breakpoints";
 
 .icon-btn {
-  min-height: 49px;
-  min-width: 49px;
+  min-height: 45px;
+  min-width: 45px;
   padding: 10px;
 }
 
@@ -46,8 +46,10 @@ const clickHandler = () => {
 }
 
 .icon {
-  width: 23px;
-  height: 21px;
+  width: 25px;
+  height: 25px;
+  max-height: 100%;
+  max-width: 100%;
   flex-shrink: 0;
 }
 </style>

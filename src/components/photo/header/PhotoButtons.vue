@@ -44,9 +44,14 @@ const store = usePhotoStore();
   box-shadow: $box-shadow-light;
   border-radius: $border-radius;
   margin-left: 16px;
+  min-height: 40px;
+  min-width: 40px;
 
   @include md-up {
     margin-left: 20px;
+    height: 49px;
+    min-width: 49px;
+    width: auto;
   }
 }
 
@@ -62,6 +67,14 @@ const store = usePhotoStore();
 
   @include md-up {
     min-width: 206px;
+    justify-content: flex-start;
+    padding-left: 24px;
   }
+}
+</style>
+
+<style scoped>
+.download >>> .text {
+  margin-left: 16px;
 }
 </style>

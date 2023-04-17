@@ -60,6 +60,8 @@ defineProps({
 
     @include md-up {
       color: $light-grey;
+      font-size: 30px;
+      line-height: 35px;
     }
   }
 
@@ -70,6 +72,8 @@ defineProps({
 
     @include md-up {
       color: $light-grey;
+      font-size: 18px;
+      line-height: 21px;
     }
   }
 }

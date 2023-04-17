@@ -36,14 +36,19 @@ window.addEventListener("scroll", handleScrollOptimised);
 @import "../../assets/styles/shadow";
 
 .scroll {
-  width: 49px;
-  height: 49px;
   background-color: $white;
   border-radius: $border-radius;
   filter: drop-shadow($box-shadow-light);
 
   position: fixed;
   bottom: 3.6vw;
-  right: 3.6vw;
+  right: 5.8vw;
+}
+</style>
+
+<style scoped>
+.icon >>> svg {
+  width: 17px;
+  height: 17px;
 }
 </style>
