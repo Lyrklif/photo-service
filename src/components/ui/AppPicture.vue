@@ -56,6 +56,7 @@ const loadHandler = () => {
   &__img {
     max-width: 100%;
     object-fit: cover;
+    object-position: center;
     width: 100%;
     height: 100%;
 

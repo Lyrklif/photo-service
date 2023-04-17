@@ -1,3 +1,3 @@
-const LIMIT_IMAGES = 8;
+const LIMIT_IMAGES = 9;
 
 export { LIMIT_IMAGES };

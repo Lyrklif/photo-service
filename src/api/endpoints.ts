@@ -1,10 +1,10 @@
 import { LIMIT_IMAGES } from "../constants/image";
 import instance from "./instance";
 import type { AxiosPromise } from "axios";
-// import type { Response } from "./types";
+import type { IPhoto } from "./types";
 
 export interface ApiInterface {
-  getRandom: (count?: number) => AxiosPromise<any>;
+  getRandom: (count?: number) => AxiosPromise<Array<IPhoto>>;
   searchPhoto: (query: string) => AxiosPromise<any>;
   getPhoto: (photoId: string) => AxiosPromise<any>;
   getLikedPhotos: (username?: string) => AxiosPromise<any>;
