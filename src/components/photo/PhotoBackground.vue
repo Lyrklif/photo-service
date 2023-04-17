@@ -15,6 +15,7 @@ defineProps({
       :src="image"
       :srcset="`${imageLarge} 2x`"
       class="bg-image"
+      lazy
     />
   </div>
 </template>

@@ -1,20 +1,25 @@
 <script lang="ts" setup>
-import { PropType, ref } from "vue";
+import { computed, PropType, ref } from "vue";
 
 type TSource = {
   media: string;
   srcset: string;
 };
 
-defineProps({
+const props = defineProps({
   source: { type: Array as PropType<Array<TSource>>, default: () => [] },
   src: { type: String, required: true },
   srcset: { type: String, required: true },
   alt: { type: String, required: true },
   contain: { type: Boolean, default: false },
+  lazy: { type: Boolean, default: false },
 });
 
 const loaded = ref<boolean>(false);
+
+const loadingValue = computed(() => {
+  return props.lazy ? "lazy" : null;
+});
 
 const loadHandler = () => {
   loaded.value = true;
@@ -35,6 +40,7 @@ const loadHandler = () => {
       :srcset="srcset"
       :src="src"
       :alt="alt"
+      :loading="loadingValue"
       class="picture__img"
       :class="{ contain }"
       @load="loadHandler"

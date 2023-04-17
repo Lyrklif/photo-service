@@ -21,6 +21,7 @@ defineProps({
           :src="item.urls.small"
           :srcset="`${item.urls.regular} 2x`"
           class="list__img"
+          lazy
         />
       </router-link>
     </li>
