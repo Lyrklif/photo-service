@@ -5,9 +5,9 @@ import type { IPhoto } from "./types";
 
 export interface ApiInterface {
   getRandom: (count?: number) => AxiosPromise<Array<IPhoto>>;
-  searchPhoto: (query: string) => AxiosPromise<any>;
-  getPhoto: (photoId: string) => AxiosPromise<any>;
-  getLikedPhotos: (username?: string) => AxiosPromise<any>;
+  searchPhoto: (query: string) => AxiosPromise<Array<IPhoto>>;
+  getPhoto: (photoId: string) => AxiosPromise<IPhoto>;
+  getLikedPhotos: (username?: string) => AxiosPromise<Array<IPhoto>>;
   likePhoto: (id: string) => AxiosPromise;
   unlikePhoto: (id: string) => AxiosPromise;
 }
