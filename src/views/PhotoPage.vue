@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import API from "../api/endpoints";
-import PhotoAuthor from "../components/photo/PhotoAuthor.vue";
+import PhotoHeader from "../components/photo/header/PhotoHeader.vue";
 import PhotoFull from "../components/photo/PhotoFull.vue";
 import PhotoBackground from "../components/photo/PhotoBackground.vue";
 import type { IPhoto } from "../api/types";
@@ -35,16 +35,13 @@ load();
 
 <template>
   <main v-if="photo">
-    <header class="container header">
-      <h1 class="visually-hidden">{{ photo.alt_description }}</h1>
-
-      <PhotoAuthor
-        :name="photo.user.name"
-        :username="photo.user.username"
-        :image="photo.user.profile_image.medium"
-        :imageLarge="photo.user.profile_image.large"
-      />
-    </header>
+    <PhotoHeader
+      :title="photo.alt_description"
+      :name="photo.user.name"
+      :username="photo.user.username"
+      :image="photo.user.profile_image.medium"
+      :imageLarge="photo.user.profile_image.large"
+    />
 
     <div class="container">
       <PhotoFull

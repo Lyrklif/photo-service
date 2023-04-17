@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <AppButton>
+  <AppButton class="icon-btn">
     <AppIcon :name="icon" class="icon" />
     <span v-if="text" class="text">{{ text }}</span>
   </AppButton>
@@ -23,6 +23,12 @@ defineProps({
 
 <style lang="scss" scoped>
 @import "../../assets/styles/breakpoints";
+
+.icon-btn {
+  min-height: 49px;
+  min-width: 49px;
+  padding: 10px;
+}
 
 .text {
   display: none;

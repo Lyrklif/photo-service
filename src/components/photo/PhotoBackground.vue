@@ -34,7 +34,6 @@ defineProps({
     top: 0;
     width: 100%;
     max-width: 100%;
-    height: 1300px;
     max-height: 100vh;
     z-index: -1;
     user-select: none;
