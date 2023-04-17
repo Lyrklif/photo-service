@@ -2,12 +2,14 @@
 import LogoHeader from "./LogoHeader.vue";
 import LikeButton from "../../photo/like-button/LikeButton.vue";
 import IconButton from "../../ui/IconButton.vue";
-import { computed, PropType } from "vue";
-import { RouteRecordName, useRoute } from "vue-router";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 import { PAGE_NAMES } from "../../../constants/router";
 import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
+import { usePhotoStore } from "../../../stores/photo";
 
 const route = useRoute();
+const store = usePhotoStore();
 
 const isMainPage = computed(() => {
   return route.name === PAGE_NAMES.main;
@@ -39,7 +41,12 @@ const likeButtonType = computed(() => {
           class="search"
         />
 
-        <LikeButton :type="likeButtonType" text="Избранное" />
+        <LikeButton
+          :type="likeButtonType"
+          text="Избранное"
+          :liked="store.isLiked"
+          @click="store.likePhoto"
+        />
       </div>
     </div>
   </header>

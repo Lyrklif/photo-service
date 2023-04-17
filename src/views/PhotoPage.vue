@@ -1,63 +1,41 @@
 <script lang="ts" setup>
-import { ref } from "vue";
-import API from "../api/endpoints";
 import PhotoHeader from "../components/photo/header/PhotoHeader.vue";
 import PhotoFull from "../components/photo/PhotoFull.vue";
 import PhotoBackground from "../components/photo/PhotoBackground.vue";
-import type { IPhoto } from "../api/types";
 import { useRoute } from "vue-router";
-import AppPicture from "../components/ui/AppPicture.vue";
+import { usePhotoStore } from "../stores/photo";
 
-const loading = ref<boolean>(false);
-const error = ref<boolean>(false);
-const errorText = ref<string>("");
-const photo = ref<IPhoto>();
 const route = useRoute();
+const store = usePhotoStore();
 
-async function load() {
-  try {
-    loading.value = true;
-    error.value = false;
-    errorText.value = "";
-
-    const response = await API.getPhoto(`${route.params.id}`);
-    photo.value = response.data;
-  } catch (e: any) {
-    error.value = true;
-    errorText.value = e.response.statusText;
-  } finally {
-    loading.value = false;
-  }
-}
-
-load();
+store.loadPhotoData(`${route.params.id}`);
 </script>
 
 <template>
-  <main v-if="photo">
+  <main v-if="store.photo">
     <PhotoHeader
-      :title="photo.alt_description"
-      :name="photo.user.name"
-      :username="photo.user.username"
-      :image="photo.user.profile_image.medium"
-      :imageLarge="photo.user.profile_image.large"
-      :download="photo.links.download"
-      :liked="photo.liked_by_user"
+      :title="store.photo.alt_description"
+      :name="store.photo.user.name"
+      :username="store.photo.user.username"
+      :image="store.photo.user.profile_image.medium"
+      :imageLarge="store.photo.user.profile_image.large"
+      :download="store.photo.links.download"
+      :liked="store.isLiked"
     />
 
     <div class="container">
       <PhotoFull
-        :src-large="photo.urls.full"
-        :src-medium="photo.urls.regular"
-        :src="photo.urls.small"
-        :alt="photo.alt_description"
+        :src-large="store.photo.urls.full"
+        :src-medium="store.photo.urls.regular"
+        :src="store.photo.urls.small"
+        :alt="store.photo.alt_description"
       />
     </div>
 
     <PhotoBackground
-      :alt="photo.alt_description"
-      :image="photo.urls.regular"
-      :imageLarge="photo.urls.full"
+      :alt="store.photo.alt_description"
+      :image="store.photo.urls.regular"
+      :imageLarge="store.photo.urls.full"
     />
   </main>
 </template>

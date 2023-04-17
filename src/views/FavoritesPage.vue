@@ -1,31 +1,9 @@
 <script lang="ts" setup>
-import { ref } from "vue";
-import API from "../api/endpoints";
 import PhotoList from "../components/photo/PhotoList.vue";
-import type { IPhoto } from "../api/types";
+import { useFavoritesStore } from "../stores/favorites";
 
-const loading = ref<boolean>(false);
-const error = ref<boolean>(false);
-const errorText = ref<string>("");
-const list = ref<Array<IPhoto>>([]);
-
-async function load() {
-  try {
-    loading.value = true;
-    error.value = false;
-    errorText.value = "";
-
-    const response = await API.getLikedPhotos();
-    list.value = response.data;
-  } catch (e: any) {
-    error.value = true;
-    errorText.value = e.response.statusText;
-  } finally {
-    loading.value = false;
-  }
-}
-
-load();
+const store = useFavoritesStore();
+store.loadFavorites();
 </script>
 
 <template>
@@ -35,7 +13,7 @@ load();
     </header>
 
     <div class="container">
-      <PhotoList :list="list" class="list" />
+      <PhotoList :list="store.list" class="list" />
     </div>
   </main>
 </template>

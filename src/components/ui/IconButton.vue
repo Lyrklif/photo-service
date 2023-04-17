@@ -12,10 +12,16 @@ defineProps({
     default: "",
   },
 });
+
+const emits = defineEmits(["click"]);
+
+const clickHandler = () => {
+  emits("click");
+};
 </script>
 
 <template>
-  <AppButton class="icon-btn">
+  <AppButton class="icon-btn" @click="clickHandler">
     <AppIcon :name="icon" class="icon" />
     <span v-if="text" class="text">{{ text }}</span>
   </AppButton>

@@ -14,8 +14,6 @@ const props = defineProps({
   },
 });
 
-const isLiked = ref<boolean>(props.liked);
-
 const favorite = computed(() => {
   switch (props.type) {
     case LIKE_BUTTON_VARIANTS.static:
@@ -43,13 +41,13 @@ const favorite = computed(() => {
 });
 
 const iconHeart = computed(() => {
-  return isLiked.value ? "heart-fill" : "heart";
+  return props.liked ? "heart-fill" : "heart";
 });
 
 const emits = defineEmits(["click"]);
 
 const favoriteClickHandler = (event: PointerEvent | MouseEvent) => {
-  if (favorite.value.disabled) return;
+  if (favorite.value.disabled || !favorite.value.button) return;
   emits("click", event);
 };
 </script>
@@ -61,8 +59,8 @@ const favoriteClickHandler = (event: PointerEvent | MouseEvent) => {
     :to="favorite.to"
     :text="text"
     :icon="iconHeart"
-    :class="{ fill: isLiked }"
-    @click="favorite.button ? favoriteClickHandler : null"
+    :class="{ fill: props.liked }"
+    @click="favoriteClickHandler"
   />
 </template>
 

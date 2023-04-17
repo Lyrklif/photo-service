@@ -1,38 +1,25 @@
 <script lang="ts" setup>
-import { ref } from "vue";
 import IconButton from "../../ui/IconButton.vue";
 import LikeButton from "../../photo/like-button/LikeButton.vue";
 import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
-import API from "../../../api/endpoints";
-import { useRoute } from "vue-router";
+import { usePhotoStore } from "../../../stores/photo";
 
-const props = defineProps({
+defineProps({
   downloadName: { type: String, required: true },
   downloadUrl: { type: String, required: true },
   liked: { type: Boolean, default: false },
 });
 
-const route = useRoute();
-const isLiked = ref<boolean>(props.liked);
-
-async function likeHandler() {
-  try {
-    const method = isLiked.value ? API.unlikePhoto : API.likePhoto;
-
-    await method(`${route.params.id}`);
-    isLiked.value = !isLiked.value;
-  } finally {
-    //
-  }
-}
+const store = usePhotoStore();
 </script>
 
 <template>
   <div class="buttons">
     <LikeButton
       class="button like"
+      :liked="store.isLiked"
       :type="LIKE_BUTTON_VARIANTS.button"
-      @click="likeHandler"
+      @click="store.likePhoto"
     />
 
     <IconButton

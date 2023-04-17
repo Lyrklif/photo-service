@@ -1,12 +1,18 @@
 <script lang="ts" setup>
 import SearchBackground from "./SearchBackground.vue";
 import SearchForm from "./SearchForm.vue";
+
+const emits = defineEmits(["submit"]);
+
+const submitHandler = (text: string) => {
+  emits("submit", text);
+};
 </script>
 
 <template>
   <div class="search-panel">
     <div class="container">
-      <SearchForm class="form" />
+      <SearchForm class="form" @submit="submitHandler" />
     </div>
     <SearchBackground />
   </div>
