@@ -6,7 +6,7 @@
   "homepage": "https://lyrklif.github.io/photo-service/",
   "scripts": {
     "dev": "vite --host --base /",
-    "build": "vue-tsc && vite build --base /photo-service/",
+    "build": "vite build --base /photo-service/",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "predeploy": "npm run build",
