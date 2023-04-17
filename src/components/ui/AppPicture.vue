@@ -65,11 +65,14 @@ const loadHandler = () => {
     object-position: center;
     width: 100%;
     height: 100%;
-    display: block;
 
     &.contain {
       object-fit: contain;
     }
+  }
+
+  &__img {
+    display: block;
   }
 
   &.loaded {
