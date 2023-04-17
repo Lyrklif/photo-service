@@ -3,8 +3,8 @@ import AppPicture from "../ui/AppPicture.vue";
 
 const source = [
   {
-    srcset: `src/assets/images/background-desktop@2x.png 2x,
-      src/assets/images/background-desktop.png`,
+    srcset: `background-desktop@2x.png 2x,
+      background-desktop.png`,
     media: "(min-width: 768px)",
   },
 ];
@@ -14,8 +14,8 @@ const source = [
   <AppPicture
     class="bg-image"
     :source="source"
-    srcset="src/assets/images/background@2x.png 2x"
-    src="src/assets/images/background.png"
+    srcset="background@2x.png 2x"
+    src="background.png"
     alt="'Звездная ночь' Винсента Ван Гога"
   />
 </template>
