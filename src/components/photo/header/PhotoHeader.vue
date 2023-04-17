@@ -16,6 +16,7 @@ defineProps({
 <template>
   <header class="container header">
     <h1 class="visually-hidden">{{ title }}</h1>
+
     <PhotoAuthor
       :name="name"
       :username="username"

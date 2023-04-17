@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import IconButton from "../../ui/IconButton.vue";
-import { computed } from "vue";
+import LikeButton from "../../photo/like-button/LikeButton.vue";
+import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
 import API from "../../../api/endpoints";
 import { useRoute } from "vue-router";
 
@@ -13,10 +14,6 @@ const props = defineProps({
 
 const route = useRoute();
 const isLiked = ref<boolean>(props.liked);
-
-const iconHeart = computed(() => {
-  return isLiked.value ? "heart-fill" : "heart";
-});
 
 async function likeHandler() {
   try {
@@ -32,11 +29,9 @@ async function likeHandler() {
 
 <template>
   <div class="buttons">
-    liked: {{ liked }}
-    <IconButton
+    <LikeButton
       class="button like"
-      :class="{ fill: liked }"
-      :icon="iconHeart"
+      :type="LIKE_BUTTON_VARIANTS.button"
       @click="likeHandler"
     />
 
@@ -71,10 +66,6 @@ async function likeHandler() {
 .like {
   color: $dark;
   background-color: $white;
-
-  &.fill {
-    color: $primary;
-  }
 }
 
 .download {
