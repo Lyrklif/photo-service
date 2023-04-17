@@ -30,6 +30,7 @@ defineProps({
 <style lang="scss" scoped>
 @import "../../assets/styles/colors";
 @import "../../assets/styles/breakpoints";
+@import "../../assets/styles/decarations";
 
 .list {
   &__item {
@@ -45,10 +46,10 @@ defineProps({
   }
 
   &__link {
-    background-color: $grey;
+    background-color: $dark-grey;
     display: block;
     width: 100%;
-    border-radius: 8px;
+    border-radius: $border-radius;
     overflow: hidden;
     height: auto;
     position: relative;

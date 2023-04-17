@@ -46,7 +46,7 @@ load();
 
 .page {
   @include md-up {
-    border-top: 16px solid $grey;
+    border-top: 16px solid $dark-grey;
   }
 }
 

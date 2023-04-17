@@ -25,7 +25,7 @@ import SearchForm from "./SearchForm.vue";
   @include md-up() {
     padding-top: 92px;
     padding-bottom: 92px;
-    border-bottom: 16px solid $grey;
+    border-bottom: 16px solid $dark-grey;
   }
 }
 
