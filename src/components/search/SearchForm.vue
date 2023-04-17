@@ -11,7 +11,7 @@ const setValue = (value: string) => {
 };
 
 const submitHandler = () => {
-  emits("submit", search.value);
+  emits("submit", search.value.trim());
 };
 </script>
 
