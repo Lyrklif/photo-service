@@ -10,6 +10,7 @@ defineProps({
 <template>
   <div class="buttons">
     <IconButton class="button like" icon="heart" />
+
     <IconButton
       class="button download"
       icon="download"
@@ -17,6 +18,7 @@ defineProps({
       :download="downloadName"
       :href="downloadUrl"
       customTag="a"
+      target="_blank"
     />
   </div>
 </template>
