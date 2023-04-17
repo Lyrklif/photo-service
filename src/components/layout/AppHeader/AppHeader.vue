@@ -63,12 +63,19 @@ const likeButtonType = computed(() => {
   color: $white;
   padding-top: 18px;
   padding-bottom: 18px;
+  height: 80px;
+
+  @include md-up {
+    height: 81px;
+  }
 
   &.main {
+    height: 70px;
     padding-top: 13px;
     padding-bottom: 13px;
 
     @include md-up {
+      height: auto;
       padding-top: 33px;
       padding-bottom: 43px;
     }
