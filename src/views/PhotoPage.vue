@@ -41,6 +41,7 @@ load();
       :username="photo.user.username"
       :image="photo.user.profile_image.medium"
       :imageLarge="photo.user.profile_image.large"
+      :download="photo.links.download"
     />
 
     <div class="container">

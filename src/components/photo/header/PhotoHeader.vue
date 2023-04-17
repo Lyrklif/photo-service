@@ -8,6 +8,7 @@ defineProps({
   username: { type: String, required: true },
   image: { type: String, required: true },
   imageLarge: { type: String, required: true },
+  download: { type: String, required: true },
 });
 </script>
 
@@ -20,7 +21,7 @@ defineProps({
       :image="image"
       :imageLarge="imageLarge"
     />
-    <PhotoButtons />
+    <PhotoButtons :downloadName="title" :downloadUrl="download" />
   </header>
 </template>
 

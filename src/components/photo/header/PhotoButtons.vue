@@ -2,17 +2,22 @@
 import IconButton from "../../ui/IconButton.vue";
 
 defineProps({
-  name: { type: String, required: true },
-  username: { type: String, required: true },
-  image: { type: String, required: true },
-  imageLarge: { type: String, required: true },
+  downloadName: { type: String, required: true },
+  downloadUrl: { type: String, required: true },
 });
 </script>
 
 <template>
   <div class="buttons">
     <IconButton class="button like" icon="heart" />
-    <IconButton class="button download" icon="download" text="Downloand" />
+    <IconButton
+      class="button download"
+      icon="download"
+      text="Downloand"
+      :download="downloadName"
+      :href="downloadUrl"
+      customTag="a"
+    />
   </div>
 </template>
 
