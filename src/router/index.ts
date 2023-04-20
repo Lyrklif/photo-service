@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import { PAGE_NAMES } from "../constants/router";
+import { PAGE_NAMES } from "../common/constants/router";
 
 import MainPage from "../views/MainPage.vue";
 const PhotoPage = () => import("../views/PhotoPage.vue");

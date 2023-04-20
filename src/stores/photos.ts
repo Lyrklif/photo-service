@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { ref, Ref } from "vue";
-import API from "../api/endpoints";
-import type { IPhoto } from "../api/types";
+import { API } from "../api";
+import type { IPhoto } from "../api";
 
 export interface StoreInterface {
   loading: Ref<boolean>;

@@ -4,7 +4,7 @@ import LikeButton from "../../photo/like-button/LikeButton.vue";
 import IconButton from "../../ui/IconButton.vue";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-import { PAGE_NAMES } from "../../../constants/router";
+import { PAGE_NAMES } from "../../../common/constants/router";
 import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
 import { usePhotoStore } from "../../../stores/photo";
 

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import IconButton from "../../ui/IconButton.vue";
 import { computed, PropType, ref } from "vue";
-import { PAGE_NAMES } from "../../../constants/router";
+import { PAGE_NAMES } from "../../../common/constants/router";
 import type { TLikeButton } from "./types";
 import { LIKE_BUTTON_VARIANTS } from "./types";
 

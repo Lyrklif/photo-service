@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
-import { fetchToken, getAuthCodeUrl } from "../api/auth";
-import { getUrlParam } from "../functions/url";
-import cookiesStorage from "../helpers/cookiesStorage";
+import { fetchToken, getAuthCodeUrl } from "../api";
+import { getUrlParam } from "../common/url";
+import cookiesStorage from "../common/cookiesStorage";
 
 export interface StateInterface {
   accessToken: string;
