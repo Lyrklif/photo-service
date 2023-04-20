@@ -24,7 +24,7 @@ const getAuthCodeUrl = (): string => {
     client_id: import.meta.env.VITE_ACCESS_KEY,
     redirect_uri: redirect_uri,
     response_type: "code",
-    scope: "public+read_user+write_likes",
+    scope: "public+write_likes",
   };
 
   let link = `https://unsplash.com/oauth/authorize`;
