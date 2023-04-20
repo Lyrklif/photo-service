@@ -2,15 +2,19 @@
 import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import AppHeader from "../components/layout/AppHeader/AppHeader.vue";
+import AppMessage from "../components/ui/AppMessage.vue";
 import IconButton from "../components/ui/IconButton.vue";
 import LikeButton from "../components/photo/like-button/LikeButton.vue";
 import { LIKE_BUTTON_VARIANTS } from "../components/photo/like-button/types";
 import { useFavoritesStore } from "../stores/favorites";
 import { storeToRefs } from "pinia";
 import { PAGE_NAMES } from "../common/constants/router";
+import { useProcessStore } from "../stores/process";
 
 const store = useFavoritesStore();
-const { loading, list } = storeToRefs(store);
+const processStore = useProcessStore();
+const { loading, error } = storeToRefs(processStore);
+const { list } = storeToRefs(store);
 
 store.loadFavorites();
 </script>
@@ -38,6 +42,7 @@ store.loadFavorites();
 
       <div class="container">
         <AppLoader v-if="loading" />
+        <AppMessage v-else-if="error" :text="error" type="error" offset />
         <PhotoList v-else :list="list" class="list" />
       </div>
     </main>

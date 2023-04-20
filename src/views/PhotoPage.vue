@@ -3,6 +3,7 @@ import PhotoHeader from "../components/photo/header/PhotoHeader.vue";
 import PhotoFull from "../components/photo/PhotoFull.vue";
 import PhotoBackground from "../components/photo/PhotoBackground.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
+import AppMessage from "../components/ui/AppMessage.vue";
 import AppHeader from "../components/layout/AppHeader/AppHeader.vue";
 import IconButton from "../components/ui/IconButton.vue";
 import LikeButton from "../components/photo/like-button/LikeButton.vue";
@@ -11,10 +12,13 @@ import { useRoute } from "vue-router";
 import { usePhotoStore } from "../stores/photo";
 import { storeToRefs } from "pinia";
 import { PAGE_NAMES } from "../common/constants/router";
+import { useProcessStore } from "../stores/process";
 
 const route = useRoute();
 const store = usePhotoStore();
-const { loading, photo, isLiked } = storeToRefs(store);
+const processStore = useProcessStore();
+const { loading, error } = storeToRefs(processStore);
+const { photo, isLiked } = storeToRefs(store);
 
 store.loadPhotoData(`${route.params.id}`);
 </script>
@@ -34,10 +38,12 @@ store.loadPhotoData(`${route.params.id}`);
         class="like"
         :liked="isLiked"
         @click="store.likePhoto"
+        :disabled="loading"
       />
     </AppHeader>
 
-    <AppLoader v-if="loading" />
+    <AppLoader v-if="loading && !photo" />
+    <AppMessage v-else-if="error" :text="error" type="error" offset />
     <main v-else-if="photo">
       <PhotoHeader
         :title="photo.alt_description"
