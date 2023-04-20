@@ -4,7 +4,6 @@ import { API } from "../api";
 import type { IPhoto } from "../api";
 
 export interface StoreInterface {
-  loading: Ref<boolean>;
   isLiked: Ref<boolean>;
   likeProcess: Ref<boolean>;
   photo: Ref<IPhoto | null>;
@@ -14,13 +13,11 @@ export interface StoreInterface {
 
 export const usePhotoStore = defineStore("photo", (): StoreInterface => {
   const photo = ref<IPhoto | null>(null);
-  const loading = ref<boolean>(false);
   const isLiked = ref<boolean>(false);
   const likeProcess = ref<boolean>(false);
 
   const loadPhotoData = async (id: string): Promise<void> => {
     try {
-      loading.value = true;
       isLiked.value = false;
       photo.value = null;
 
@@ -29,13 +26,11 @@ export const usePhotoStore = defineStore("photo", (): StoreInterface => {
       isLiked.value = res.data.liked_by_user;
     } catch (e: any) {
       console.error(e.response);
-    } finally {
-      loading.value = false;
     }
   };
 
   const likePhoto = async (): Promise<void> => {
-    if (!photo.value || loading.value) return;
+    if (!photo.value) return;
 
     try {
       likeProcess.value = true;
@@ -53,7 +48,6 @@ export const usePhotoStore = defineStore("photo", (): StoreInterface => {
   return {
     photo,
     isLiked,
-    loading,
     likeProcess,
     loadPhotoData,
     likePhoto,

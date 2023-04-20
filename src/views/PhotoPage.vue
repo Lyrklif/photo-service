@@ -18,7 +18,7 @@ const route = useRoute();
 const store = usePhotoStore();
 const processStore = useProcessStore();
 const { loading, error } = storeToRefs(processStore);
-const { photo, isLiked } = storeToRefs(store);
+const { photo, isLiked, likeProcess } = storeToRefs(store);
 
 store.loadPhotoData(`${route.params.id}`);
 </script>
@@ -38,7 +38,7 @@ store.loadPhotoData(`${route.params.id}`);
         class="like"
         :liked="isLiked"
         @click="store.likePhoto"
-        :disabled="loading"
+        :disabled="likeProcess"
       />
     </AppHeader>
 
