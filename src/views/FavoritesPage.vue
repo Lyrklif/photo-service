@@ -1,14 +1,10 @@
 <script lang="ts" setup>
 import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
-import AppHeader from "../components/layout/AppHeader/AppHeader.vue";
 import AppMessage from "../components/ui/AppMessage.vue";
-import IconButton from "../components/ui/IconButton.vue";
-import LikeButton from "../components/photo/like-button/LikeButton.vue";
-import { LIKE_BUTTON_VARIANTS } from "../components/photo/like-button/types";
+import FavoriteHeader from "../widgets/favorite/FavoriteHeader.vue";
 import { useFavoritesStore } from "../stores/favorites";
 import { storeToRefs } from "pinia";
-import { PAGE_NAMES } from "../common/constants/router";
 import { useProcessStore } from "../stores/process";
 
 const store = useFavoritesStore();
@@ -21,19 +17,7 @@ store.loadFavorites();
 
 <template>
   <div>
-    <AppHeader>
-      <IconButton
-        :to="{ name: PAGE_NAMES.main }"
-        text="Поиск"
-        icon="search"
-        class="search"
-      />
-      <LikeButton
-        :type="LIKE_BUTTON_VARIANTS.static"
-        text="Избранное"
-        class="like"
-      />
-    </AppHeader>
+    <FavoriteHeader />
 
     <main class="page">
       <header class="favorite-header">

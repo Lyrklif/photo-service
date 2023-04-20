@@ -4,11 +4,9 @@ import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import ScrollTop from "../components/ui/ScrollTop.vue";
 import AppMessage from "../components/ui/AppMessage.vue";
-import AppHeader from "../components/layout/AppHeader/AppHeader.vue";
-import LikeButton from "../components/photo/like-button/LikeButton.vue";
+import MainHeader from "../widgets/main/MainHeader.vue";
 import { usePhotosStore } from "../stores/photos";
 import { storeToRefs } from "pinia";
-import { LIKE_BUTTON_VARIANTS } from "../components/photo/like-button/types";
 import { useProcessStore } from "../stores/process";
 
 const store = usePhotosStore();
@@ -26,13 +24,7 @@ const searchHandler = (text: string = "") => {
 
 <template>
   <div>
-    <AppHeader static-logo big>
-      <LikeButton
-        :type="LIKE_BUTTON_VARIANTS.link"
-        text="Избранное"
-        class="like"
-      />
-    </AppHeader>
+    <MainHeader />
 
     <main>
       <header class="visually-hidden">
@@ -58,12 +50,6 @@ const searchHandler = (text: string = "") => {
 
   @include md-up {
     margin-top: 114px;
-  }
-}
-
-.like {
-  @include lg-up {
-    font-size: 18px;
   }
 }
 </style>
