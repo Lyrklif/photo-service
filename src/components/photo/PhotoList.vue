@@ -33,6 +33,13 @@ defineProps({
 @import "../../assets/styles/breakpoints";
 @import "../../assets/styles/decarations";
 
+.unstyled-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .list {
   &__item {
     margin-bottom: 22px;
