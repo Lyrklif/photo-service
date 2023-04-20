@@ -14,7 +14,10 @@ interface IAuthCode {
   response_type: string;
   scope: string;
 }
-const redirect_uri = "https://lyrklif.github.io/photo-service/";
+const redirect_uri =
+  process.env.NODE_ENV === "development"
+    ? "http://192.168.0.104:5173/"
+    : "https://lyrklif.github.io/photo-service/";
 
 const getAuthCodeUrl = (): string => {
   const params: IAuthCode = {
