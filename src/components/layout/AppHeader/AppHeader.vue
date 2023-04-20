@@ -71,10 +71,14 @@ defineProps({
   @include md-up {
     font-size: 20px;
     transform: translateX(7px);
+  }
+}
+</style>
 
-    & > * {
-      margin-left: 18px;
-    }
+<style scoped>
+@media (min-width: 768px) {
+  .buttons-wrap >>> .search {
+    margin-right: 18px;
   }
 }
 </style>

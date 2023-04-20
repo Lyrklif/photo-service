@@ -1,10 +1,8 @@
-@import "functions/rem";
-
-$grid-breakpoints-sm: rem(576px);
-$grid-breakpoints-md: rem(768px);
-$grid-breakpoints-lg: rem(992px);
-$grid-breakpoints-xl: rem(1280px);
-$grid-breakpoints-xxl: rem(1920px);
+$grid-breakpoints-sm: 576px;
+$grid-breakpoints-md: 768px;
+$grid-breakpoints-lg: 992px;
+$grid-breakpoints-xl: 1280px;
+$grid-breakpoints-xxl: 1920px;
 
 
 // @template: @include sm-up {}
