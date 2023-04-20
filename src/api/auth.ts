@@ -14,14 +14,17 @@ interface IAuthCode {
   response_type: string;
   scope: string;
 }
-const redirect_uri = "https://lyrklif.github.io/photo-service/";
+const redirect_uri =
+  process.env.NODE_ENV === "development"
+    ? "http://192.168.0.104:5173/"
+    : "https://lyrklif.github.io/photo-service/";
 
 const getAuthCodeUrl = (): string => {
   const params: IAuthCode = {
     client_id: import.meta.env.VITE_ACCESS_KEY,
     redirect_uri: redirect_uri,
     response_type: "code",
-    scope: "public+read_user+write_likes",
+    scope: "public+write_likes",
   };
 
   let link = `https://unsplash.com/oauth/authorize`;

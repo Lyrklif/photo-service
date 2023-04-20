@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { PropType } from "vue";
-import type { IPhoto } from "../../api/types";
+import type { IPhoto } from "../../api";
 import AppPicture from "../ui/AppPicture.vue";
-import { PAGE_NAMES } from "../../constants/router";
+import { PAGE_NAMES } from "../../common/constants/router";
 
 defineProps({
   list: { type: Array as PropType<Array<IPhoto>>, default: () => [] },
@@ -32,6 +32,13 @@ defineProps({
 @import "../../assets/styles/colors";
 @import "../../assets/styles/breakpoints";
 @import "../../assets/styles/decarations";
+
+.unstyled-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
 .list {
   &__item {

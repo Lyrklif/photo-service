@@ -1,54 +1,36 @@
 <script lang="ts" setup>
-import PhotoHeader from "../components/photo/header/PhotoHeader.vue";
-import PhotoFull from "../components/photo/PhotoFull.vue";
-import PhotoBackground from "../components/photo/PhotoBackground.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
+import AppMessage from "../components/ui/AppMessage.vue";
+import PhotoPageHeader from "../components/page-content/photo/PhotoPageHeader.vue";
+import PhotoContend from "../components/page-content/photo/PhotoContend.vue";
 import { useRoute } from "vue-router";
 import { usePhotoStore } from "../stores/photo";
+import { storeToRefs } from "pinia";
+import { useProcessStore } from "../stores/process";
 
 const route = useRoute();
 const store = usePhotoStore();
+const processStore = useProcessStore();
+const { loading, error } = storeToRefs(processStore);
+const { photo } = storeToRefs(store);
 
 store.loadPhotoData(`${route.params.id}`);
 </script>
 
 <template>
-  <AppLoader v-if="store.loading" />
-  <main v-else-if="store.photo">
-    <PhotoHeader
-      :title="store.photo.alt_description"
-      :name="store.photo.user.name"
-      :username="store.photo.user.username"
-      :image="store.photo.user.profile_image.medium"
-      :imageLarge="store.photo.user.profile_image.large"
-      :download="store.photo.links.download"
-      :liked="store.isLiked"
-    />
+  <div>
+    <PhotoPageHeader />
 
-    <div class="container">
-      <PhotoFull
-        :src-large="store.photo.urls.full"
-        :src-medium="store.photo.urls.regular"
-        :src="store.photo.urls.small"
-        :alt="store.photo.alt_description"
-      />
-    </div>
-
-    <PhotoBackground
-      :alt="store.photo.alt_description"
-      :image="store.photo.urls.regular"
-      :imageLarge="store.photo.urls.full"
-    />
-  </main>
+    <AppLoader v-if="loading && !photo" />
+    <AppMessage v-else-if="error" :text="error" type="error" offset />
+    <PhotoContend v-else-if="photo" />
+  </div>
 </template>
 
 <style lang="scss" scoped>
 @import "../assets/styles/breakpoints";
-@import "../assets/styles/colors";
-@import "../assets/styles/decarations";
-@import "../assets/styles/shadow";
 
-.header {
+.photo-header {
   margin-top: 40px;
   margin-bottom: 32px;
 

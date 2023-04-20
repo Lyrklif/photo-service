@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import AppIcon from "../../ui/AppIcon.vue";
 import { computed } from "vue";
-import { PAGE_NAMES } from "../../../constants/router";
+import { PAGE_NAMES } from "../../../common/constants/router";
 
 const props = defineProps({
   isStatic: {

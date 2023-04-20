@@ -1,51 +1,49 @@
 import { defineStore } from "pinia";
-import { ref, Ref } from "vue";
-import { fetchToken, getAuthCodeUrl } from "../api/auth";
-import instance from "../api/instance";
+import { fetchToken, getAuthCodeUrl } from "../api";
+import { getUrlParam } from "../common/url";
+import cookiesStorage from "../common/cookiesStorage";
 
-export interface StoreInterface {
-  token: Ref<string>;
-  startAuth: () => void;
-  redirectAuthCode: () => void;
-  setToken: (code: string) => Promise<void>;
+export interface StateInterface {
+  accessToken: string;
+  refreshToken: string;
 }
 
-export const useAuthStore = defineStore("auth", (): StoreInterface => {
-  const token = ref<string>("");
+export const useAuthStore = defineStore("auth", {
+  state: (): StateInterface => {
+    return {
+      accessToken: "",
+      refreshToken: "",
+    };
+  },
+  actions: {
+    redirectAuth(): void {
+      window.location.href = getAuthCodeUrl();
+    },
+    async setToken(code: string): Promise<void> {
+      try {
+        const res = await fetchToken(code);
+        this.accessToken = res.access_token;
+        this.refreshToken = res.refresh_token;
+      } catch (e: any) {
+        console.error(e.response);
+      }
+    },
+    startAuth(): void {
+      if (this.accessToken) return;
 
-  const redirectAuthCode = (): void => {
-    const link = getAuthCodeUrl();
-    window.location.href = link;
-  };
+      const code = getUrlParam("code");
 
-  const setToken = async (code: string): Promise<void> => {
-    try {
-      const res = await fetchToken(code);
-      token.value = res.access_token;
-      instance.defaults.headers.common.Authorization = `${res.token_type} ${res.access_token}`;
-    } catch (e: any) {
-      console.error(e.response);
-    }
-  };
-
-  const startAuth = () => {
-    if (token.value) return;
-
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-      // @ts-ignore
-      get: (searchParams, prop) => searchParams.get(prop),
-    });
-    // @ts-ignore
-    const code = params.code;
-
-    if (code) setToken(code);
-    else redirectAuthCode();
-  };
-
-  return {
-    token,
-    redirectAuthCode,
-    setToken,
-    startAuth,
-  };
+      if (code) this.setToken(code);
+      else this.redirectAuth();
+    },
+  },
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        storage: cookiesStorage,
+        paths: ["accessToken", "refreshToken"],
+      },
+    ],
+  },
 });

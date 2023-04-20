@@ -1,4 +1,4 @@
-import { LIMIT_IMAGES } from "../constants/image";
+import { LIMIT_IMAGES } from "../common/constants/image";
 import instance from "./instance";
 import type { AxiosPromise } from "axios";
 import type { IPhoto } from "./types";

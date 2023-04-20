@@ -34,8 +34,6 @@ defineProps({
 
 <style lang="scss" scoped>
 @import "../../../assets/styles/breakpoints";
-@import "../../../assets/styles/colors";
-@import "../../../assets/styles/decarations";
 
 .header {
   display: flex;

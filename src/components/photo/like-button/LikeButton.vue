@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import IconButton from "../../ui/IconButton.vue";
-import { computed, PropType, ref } from "vue";
-import { PAGE_NAMES } from "../../../constants/router";
+import { computed, PropType } from "vue";
+import { PAGE_NAMES } from "../../../common/constants/router";
 import type { TLikeButton } from "./types";
 import { LIKE_BUTTON_VARIANTS } from "./types";
 
@@ -59,7 +59,7 @@ const favoriteClickHandler = (event: PointerEvent | MouseEvent) => {
     :to="favorite.to"
     :text="text"
     :icon="iconHeart"
-    :class="{ fill: props.liked }"
+    :class="{ fill: liked }"
     @click="favoriteClickHandler"
   />
 </template>
