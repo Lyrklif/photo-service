@@ -70,9 +70,6 @@ store.loadPhotoData(`${route.params.id}`);
 
 <style lang="scss" scoped>
 @import "../assets/styles/breakpoints";
-@import "../assets/styles/colors";
-@import "../assets/styles/decarations";
-@import "../assets/styles/shadow";
 
 .photo-header {
   margin-top: 40px;

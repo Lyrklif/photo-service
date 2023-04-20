@@ -57,7 +57,6 @@ const clickHandler = (event: MouseEvent) => {
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/colors";
 @import "../../assets/styles/animations";
 
 /**
