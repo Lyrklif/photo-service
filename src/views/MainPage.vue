@@ -4,8 +4,10 @@ import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import ScrollTop from "../components/ui/ScrollTop.vue";
 import { usePhotosStore } from "../stores/photos";
+import { storeToRefs } from "pinia";
 
 const store = usePhotosStore();
+const { loading, list } = storeToRefs(store);
 
 store.loadRandomPhotos();
 
@@ -23,8 +25,8 @@ const searchHandler = (text: string = "") => {
 
     <SearchPanel @submit="searchHandler" />
     <div class="container">
-      <AppLoader v-if="store.loading" />
-      <PhotoList v-else :list="store.list" class="list" />
+      <AppLoader v-if="loading" />
+      <PhotoList v-else :list="list" class="list" />
     </div>
 
     <ScrollTop />

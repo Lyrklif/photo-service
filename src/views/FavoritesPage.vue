@@ -2,8 +2,11 @@
 import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import { useFavoritesStore } from "../stores/favorites";
+import { storeToRefs } from "pinia";
 
 const store = useFavoritesStore();
+const { loading, list } = storeToRefs(store);
+
 store.loadFavorites();
 </script>
 
@@ -14,8 +17,8 @@ store.loadFavorites();
     </header>
 
     <div class="container">
-      <AppLoader v-if="store.loading" />
-      <PhotoList v-else :list="store.list" class="list" />
+      <AppLoader v-if="loading" />
+      <PhotoList v-else :list="list" class="list" />
     </div>
   </main>
 </template>

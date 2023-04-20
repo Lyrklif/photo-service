@@ -5,39 +5,41 @@ import PhotoBackground from "../components/photo/PhotoBackground.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import { useRoute } from "vue-router";
 import { usePhotoStore } from "../stores/photo";
+import { storeToRefs } from "pinia";
 
 const route = useRoute();
 const store = usePhotoStore();
+const { loading, photo, isLiked } = storeToRefs(store);
 
 store.loadPhotoData(`${route.params.id}`);
 </script>
 
 <template>
-  <AppLoader v-if="store.loading" />
-  <main v-else-if="store.photo">
+  <AppLoader v-if="loading" />
+  <main v-else-if="photo">
     <PhotoHeader
-      :title="store.photo.alt_description"
-      :name="store.photo.user.name"
-      :username="store.photo.user.username"
-      :image="store.photo.user.profile_image.medium"
-      :imageLarge="store.photo.user.profile_image.large"
-      :download="store.photo.links.download"
-      :liked="store.isLiked"
+      :title="photo.alt_description"
+      :name="photo.user.name"
+      :username="photo.user.username"
+      :image="photo.user.profile_image.medium"
+      :imageLarge="photo.user.profile_image.large"
+      :download="photo.links.download"
+      :liked="isLiked"
     />
 
     <div class="container">
       <PhotoFull
-        :src-large="store.photo.urls.full"
-        :src-medium="store.photo.urls.regular"
-        :src="store.photo.urls.small"
-        :alt="store.photo.alt_description"
+        :src-large="photo.urls.full"
+        :src-medium="photo.urls.regular"
+        :src="photo.urls.small"
+        :alt="photo.alt_description"
       />
     </div>
 
     <PhotoBackground
-      :alt="store.photo.alt_description"
-      :image="store.photo.urls.regular"
-      :imageLarge="store.photo.urls.full"
+      :alt="photo.alt_description"
+      :image="photo.urls.regular"
+      :imageLarge="photo.urls.full"
     />
   </main>
 </template>
