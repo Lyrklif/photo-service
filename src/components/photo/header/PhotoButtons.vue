@@ -3,6 +3,7 @@ import IconButton from "../../ui/IconButton.vue";
 import LikeButton from "../../photo/like-button/LikeButton.vue";
 import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
 import { usePhotoStore } from "../../../stores/photo";
+import { storeToRefs } from "pinia";
 
 defineProps({
   downloadName: { type: String, required: true },
@@ -11,13 +12,14 @@ defineProps({
 });
 
 const store = usePhotoStore();
+const { isLiked } = storeToRefs(store);
 </script>
 
 <template>
   <div class="buttons">
     <LikeButton
       class="button like"
-      :liked="store.isLiked"
+      :liked="isLiked"
       :type="LIKE_BUTTON_VARIANTS.button"
       @click="store.likePhoto"
     />
