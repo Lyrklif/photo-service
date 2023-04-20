@@ -59,7 +59,7 @@ const favoriteClickHandler = (event: PointerEvent | MouseEvent) => {
     :to="favorite.to"
     :text="text"
     :icon="iconHeart"
-    :class="{ fill: props.liked }"
+    :class="{ fill: liked }"
     @click="favoriteClickHandler"
   />
 </template>

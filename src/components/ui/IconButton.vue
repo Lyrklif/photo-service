@@ -22,7 +22,9 @@ const clickHandler = () => {
 
 <template>
   <AppButton class="icon-btn" @click="clickHandler">
-    <AppIcon :name="icon" class="icon" />
+    <span class="icon">
+      <AppIcon :name="icon" />
+    </span>
     <span v-if="text" class="text">{{ text }}</span>
   </AppButton>
 </template>
@@ -51,5 +53,6 @@ const clickHandler = () => {
   max-height: 100%;
   max-width: 100%;
   flex-shrink: 0;
+  display: block;
 }
 </style>
