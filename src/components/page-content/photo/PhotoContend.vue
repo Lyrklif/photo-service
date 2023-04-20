@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import PhotoHeader from "../../components/photo/header/PhotoHeader.vue";
-import PhotoFull from "../../components/photo/PhotoFull.vue";
-import PhotoBackground from "../../components/photo/PhotoBackground.vue";
-import { usePhotoStore } from "../../stores/photo";
+import PhotoHeader from "../../photo/header/PhotoHeader.vue";
+import PhotoFull from "../../photo/PhotoFull.vue";
+import PhotoBackground from "../../photo/PhotoBackground.vue";
+import { usePhotoStore } from "../../../stores/photo";
 import { storeToRefs } from "pinia";
 
 const store = usePhotoStore();
@@ -40,7 +40,7 @@ const { photo, isLiked } = storeToRefs(store);
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/breakpoints";
+@import "../../../assets/styles/breakpoints";
 
 .photo-header {
   margin-top: 40px;

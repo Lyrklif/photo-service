@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import AppLoader from "../components/ui/AppLoader.vue";
 import AppMessage from "../components/ui/AppMessage.vue";
-import PhotoPageHeader from "../widgets/photo/PhotoPageHeader.vue";
-import PhotoContend from "../widgets/photo/PhotoContend.vue";
+import PhotoPageHeader from "../components/page-content/photo/PhotoPageHeader.vue";
+import PhotoContend from "../components/page-content/photo/PhotoContend.vue";
 import { useRoute } from "vue-router";
 import { usePhotoStore } from "../stores/photo";
 import { storeToRefs } from "pinia";

@@ -4,7 +4,7 @@ import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import ScrollTop from "../components/ui/ScrollTop.vue";
 import AppMessage from "../components/ui/AppMessage.vue";
-import MainHeader from "../widgets/main/MainHeader.vue";
+import MainHeader from "../components/page-content/main/MainHeader.vue";
 import { usePhotosStore } from "../stores/photos";
 import { storeToRefs } from "pinia";
 import { useProcessStore } from "../stores/process";

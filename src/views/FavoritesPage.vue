@@ -2,7 +2,7 @@
 import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import AppMessage from "../components/ui/AppMessage.vue";
-import FavoriteHeader from "../widgets/favorite/FavoriteHeader.vue";
+import FavoriteHeader from "../components/page-content/favorite/FavoriteHeader.vue";
 import { useFavoritesStore } from "../stores/favorites";
 import { storeToRefs } from "pinia";
 import { useProcessStore } from "../stores/process";

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import AppHeader from "../../components/layout/AppHeader/AppHeader.vue";
-import LikeButton from "../../components/photo/like-button/LikeButton.vue";
-import { LIKE_BUTTON_VARIANTS } from "../../components/photo/like-button/types";
+import AppHeader from "../../layout/AppHeader/AppHeader.vue";
+import LikeButton from "../../photo/like-button/LikeButton.vue";
+import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
 </script>
 
 <template>
@@ -15,7 +15,7 @@ import { LIKE_BUTTON_VARIANTS } from "../../components/photo/like-button/types";
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/breakpoints";
+@import "../../../assets/styles/breakpoints";
 
 .like {
   @include lg-up {
