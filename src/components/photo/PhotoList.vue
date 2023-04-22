@@ -19,8 +19,7 @@ defineProps({
       >
         <AppPicture
           :alt="item.alt_description"
-          :src="`${item.urls.raw}&w=400&q=80&auto=compress,format`"
-          :srcset="`${item.urls.raw}&w=800&q=80&auto=compress,format 800w`"
+          :src="`${item.urls.raw}&w=400&auto=compress,format`"
           class="list__img"
           :lazy="!!index"
         />
