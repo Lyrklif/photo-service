@@ -4,8 +4,6 @@ import AppPicture from "../ui/AppPicture.vue";
 defineProps({
   alt: { type: String, required: true },
   src: { type: String, required: true },
-  srcMedium: { type: String, required: true },
-  srcLarge: { type: String, required: true },
 });
 </script>
 
@@ -13,12 +11,28 @@ defineProps({
   <AppPicture
     class="image"
     :alt="alt"
-    :src="src"
-    :srcset="`${srcMedium} 2x`"
+    :src="`${src}&w=400&auto=compress,format`"
+    :srcset="`${src}&w=800&auto=compress,format 800w`"
     :source="[
       {
-        srcset: `${srcLarge} 2x, ${srcMedium}`,
+        srcset: `${src}&w=1152&auto=compress,format 1152w, ${src}&w=576&auto=compress,format`,
+        media: '(min-width: 576px)',
+      },
+      {
+        srcset: `${src}&w=1536&auto=compress,format 1536w, ${src}&w=768&auto=compress,format`,
         media: '(min-width: 768px)',
+      },
+      {
+        srcset: `${src}&w=2160&auto=compress,format 2160w, ${src}&w=1080&auto=compress,format`,
+        media: '(min-width: 1080px)',
+      },
+      {
+        srcset: `${src}&w=2560&auto=compress,format 2560w, ${src}&w=1280&auto=compress,format`,
+        media: '(min-width: 1280px)',
+      },
+      {
+        srcset: `${src}&w=2964&auto=compress,format 2964w, ${src}&w=1482&auto=compress,format`,
+        media: '(min-width: 1920px)',
       },
     ]"
   />

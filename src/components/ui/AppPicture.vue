@@ -9,7 +9,7 @@ type TSource = {
 const props = defineProps({
   source: { type: Array as PropType<Array<TSource>>, default: () => [] },
   src: { type: String, required: true },
-  srcset: { type: String, required: true },
+  srcset: { type: String },
   alt: { type: String, required: true },
   contain: { type: Boolean, default: false },
   lazy: { type: Boolean, default: false },
