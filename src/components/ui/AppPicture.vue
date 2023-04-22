@@ -21,6 +21,10 @@ const loadingValue = computed(() => {
   return props.lazy ? "lazy" : null;
 });
 
+const alternativeText = computed(() => {
+  return props.alt || "Image";
+});
+
 const loadHandler = () => {
   loaded.value = true;
 };
@@ -39,7 +43,7 @@ const loadHandler = () => {
     <img
       :srcset="srcset"
       :src="src"
-      :alt="alt"
+      :alt="alternativeText"
       :loading="loadingValue"
       class="picture__img"
       :class="{ contain }"

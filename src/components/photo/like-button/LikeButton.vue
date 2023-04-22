@@ -55,7 +55,6 @@ const favoriteClickHandler = (event: PointerEvent | MouseEvent) => {
 <template>
   <IconButton
     :customTag="favorite.customTag"
-    :disabled="favorite.disabled"
     :to="favorite.to"
     :text="text"
     :icon="iconHeart"

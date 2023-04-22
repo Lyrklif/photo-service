@@ -36,6 +36,14 @@ const tag = computed(() => {
     : "button";
 });
 
+const componentType = computed(() => {
+  return tag.value === "button" ? props.type : null;
+});
+
+const componentDisabled = computed(() => {
+  return tag.value === "button" ? props.disabled : null;
+});
+
 const clickHandler = (event: MouseEvent) => {
   if (props.disabled) return;
   emits("click", event);
@@ -46,10 +54,10 @@ const clickHandler = (event: MouseEvent) => {
   <component
     :is="tag"
     class="base-btn btn"
-    :type="type"
+    :type="componentType"
     :class="{ primary, disabled, interactive: !disabled }"
     :to="to"
-    :disabled="disabled"
+    :disabled="componentDisabled"
     @click="clickHandler"
   >
     <slot></slot>

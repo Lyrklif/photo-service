@@ -18,7 +18,7 @@ const submitHandler = () => {
 <template>
   <form class="form" @submit.prevent="submitHandler">
     <AppInput @input="setValue" />
-    <IconButton icon="search" class="submit" type="submit" />
+    <IconButton icon="search" class="submit" type="submit" title="Поиск" />
   </form>
 </template>
 
