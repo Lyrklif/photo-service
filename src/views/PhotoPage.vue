@@ -6,7 +6,7 @@ import { useRoute } from "vue-router";
 import { usePhotoStore } from "../stores/photo";
 import { storeToRefs } from "pinia";
 import { useProcessStore } from "../stores/process";
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, onBeforeUnmount } from "vue";
 
 const route = useRoute();
 const store = usePhotoStore();
@@ -14,7 +14,9 @@ const processStore = useProcessStore();
 const { loading, error } = storeToRefs(processStore);
 const { photo } = storeToRefs(store);
 
+const controller = new AbortController();
 store.loadPhotoData(`${route.params.id}`);
+onBeforeUnmount(() => controller.abort());
 
 const AsyncPhotoContend = defineAsyncComponent(
   () => import("../components/page-content/photo/PhotoContend.vue")

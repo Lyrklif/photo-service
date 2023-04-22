@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, onBeforeUnmount } from "vue";
 import SearchPanel from "../components/search/SearchPanel.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import ScrollTop from "../components/ui/ScrollTop.vue";
@@ -14,7 +14,9 @@ const processStore = useProcessStore();
 const { loading, error } = storeToRefs(processStore);
 const { list } = storeToRefs(store);
 
+const controller = new AbortController();
 store.loadRandomPhotos();
+onBeforeUnmount(() => controller.abort());
 
 const searchHandler = (text: string = "") => {
   if (!text) store.loadRandomPhotos();

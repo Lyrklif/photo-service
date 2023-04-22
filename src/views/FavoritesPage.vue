@@ -5,14 +5,16 @@ import FavoriteHeader from "../components/page-content/favorite/FavoriteHeader.v
 import { useFavoritesStore } from "../stores/favorites";
 import { storeToRefs } from "pinia";
 import { useProcessStore } from "../stores/process";
-import { defineAsyncComponent } from "vue";
+import { defineAsyncComponent, onBeforeUnmount } from "vue";
 
 const store = useFavoritesStore();
 const processStore = useProcessStore();
 const { loading, error } = storeToRefs(processStore);
 const { list } = storeToRefs(store);
 
+const controller = new AbortController();
 store.loadFavorites();
+onBeforeUnmount(() => controller.abort());
 
 const AsyncPhotoList = defineAsyncComponent(
   () => import("../components/photo/PhotoList.vue")
