@@ -32,6 +32,7 @@
     "stylelint": "^15.2.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended-vue": "^1.4.0",
+    "vite-plugin-minify": "^1.5.2",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-webfont-dl": "^3.7.3",
     "vue": "^3.2.45",

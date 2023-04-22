@@ -4,6 +4,7 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import webfontDownload from "vite-plugin-webfont-dl";
 import path from "path";
 import replaceAllInserter from "string.prototype.replaceall";
+import { ViteMinifyPlugin } from "vite-plugin-minify";
 
 replaceAllInserter.shim();
 
@@ -17,6 +18,7 @@ export default defineConfig({
     webfontDownload([
       "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap",
     ]),
+    ViteMinifyPlugin({}),
   ],
   resolve: {
     alias: {
