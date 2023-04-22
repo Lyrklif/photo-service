@@ -16,7 +16,7 @@ interface IAuthCode {
 }
 const redirect_uri =
   process.env.NODE_ENV === "development"
-    ? "http://192.168.0.104:5173/"
+    ? "urn:ietf:wg:oauth:2.0:oob"
     : "https://lyrklif.github.io/photo-service/";
 
 const getAuthCodeUrl = (): string => {

@@ -41,15 +41,13 @@ instance.interceptors.response.use(
     return response;
   },
   async function (error) {
-    const processStore = useProcessStore();
-    processStore.setLoading(false);
-    processStore.setError(error.response.data);
+    // const processStore = useProcessStore();
+    // processStore.setLoading(false);
+    // processStore.setError(error.response.data);
 
-    if (error.response.status === INVALID_ACCESS_TOKEN) {
-      // TODO use refresh_token
-      // Redirect to Unsplash for get a new Access Token
-      window.location.href = getAuthCodeUrl();
-    }
+    // TODO use refresh_token
+    // if (error.response.status === INVALID_ACCESS_TOKEN) {
+    // }
     return Promise.reject(error);
   }
 );
