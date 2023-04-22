@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { defineAsyncComponent } from "vue";
 import SearchPanel from "../components/search/SearchPanel.vue";
-import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import ScrollTop from "../components/ui/ScrollTop.vue";
 import AppMessage from "../components/ui/AppMessage.vue";
@@ -20,6 +20,10 @@ const searchHandler = (text: string = "") => {
   if (!text) store.loadRandomPhotos();
   else store.searchByName(text);
 };
+
+const AsyncPhotoList = defineAsyncComponent(
+  () => import("../components/photo/PhotoList.vue")
+);
 </script>
 
 <template>
@@ -32,10 +36,11 @@ const searchHandler = (text: string = "") => {
       </header>
 
       <SearchPanel @submit="searchHandler" />
-      <div class="container">
+
+      <div class="container wrapper">
         <AppLoader v-if="loading" />
-        <AppMessage v-else-if="error" :text="error" type="error" offset />
-        <PhotoList v-else :list="list" class="list" />
+        <AppMessage v-else-if="error" :text="error" type="error" />
+        <component v-else :is="AsyncPhotoList" :list="list"></component>
       </div>
     </main>
     <ScrollTop />
@@ -45,7 +50,7 @@ const searchHandler = (text: string = "") => {
 <style lang="scss" scoped>
 @import "../assets/styles/breakpoints";
 
-.list {
+.wrapper {
   margin-top: 50px;
 
   @include md-up {

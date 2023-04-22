@@ -2,11 +2,11 @@
 import AppLoader from "../components/ui/AppLoader.vue";
 import AppMessage from "../components/ui/AppMessage.vue";
 import PhotoPageHeader from "../components/page-content/photo/PhotoPageHeader.vue";
-import PhotoContend from "../components/page-content/photo/PhotoContend.vue";
 import { useRoute } from "vue-router";
 import { usePhotoStore } from "../stores/photo";
 import { storeToRefs } from "pinia";
 import { useProcessStore } from "../stores/process";
+import { defineAsyncComponent } from "vue";
 
 const route = useRoute();
 const store = usePhotoStore();
@@ -15,6 +15,10 @@ const { loading, error } = storeToRefs(processStore);
 const { photo } = storeToRefs(store);
 
 store.loadPhotoData(`${route.params.id}`);
+
+const AsyncPhotoContend = defineAsyncComponent(
+  () => import("../components/page-content/photo/PhotoContend.vue")
+);
 </script>
 
 <template>
@@ -23,7 +27,7 @@ store.loadPhotoData(`${route.params.id}`);
 
     <AppLoader v-if="loading && !photo" />
     <AppMessage v-else-if="error" :text="error" type="error" offset />
-    <PhotoContend v-else-if="photo" />
+    <component v-else-if="photo" :is="AsyncPhotoContend"></component>
   </div>
 </template>
 

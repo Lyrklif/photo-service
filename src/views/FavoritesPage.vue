@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import PhotoList from "../components/photo/PhotoList.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
 import AppMessage from "../components/ui/AppMessage.vue";
 import FavoriteHeader from "../components/page-content/favorite/FavoriteHeader.vue";
 import { useFavoritesStore } from "../stores/favorites";
 import { storeToRefs } from "pinia";
 import { useProcessStore } from "../stores/process";
+import { defineAsyncComponent } from "vue";
 
 const store = useFavoritesStore();
 const processStore = useProcessStore();
@@ -13,6 +13,10 @@ const { loading, error } = storeToRefs(processStore);
 const { list } = storeToRefs(store);
 
 store.loadFavorites();
+
+const AsyncPhotoList = defineAsyncComponent(
+  () => import("../components/photo/PhotoList.vue")
+);
 </script>
 
 <template>
@@ -27,7 +31,7 @@ store.loadFavorites();
       <div class="container">
         <AppLoader v-if="loading" />
         <AppMessage v-else-if="error" :text="error" type="error" offset />
-        <PhotoList v-else :list="list" class="list" />
+        <component v-else :is="AsyncPhotoList" :list="list"></component>
       </div>
     </main>
   </div>
