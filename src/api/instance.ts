@@ -41,9 +41,9 @@ instance.interceptors.response.use(
     return response;
   },
   async function (error) {
-    // const processStore = useProcessStore();
-    // processStore.setLoading(false);
-    // processStore.setError(error.response.data);
+    const processStore = useProcessStore();
+    processStore.setLoading(false);
+    processStore.setError(error.response.data);
 
     // TODO use refresh_token
     // if (error.response.status === INVALID_ACCESS_TOKEN) {

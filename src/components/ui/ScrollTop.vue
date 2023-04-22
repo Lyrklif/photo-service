@@ -26,7 +26,12 @@ window.addEventListener("scroll", handleScrollOptimised);
 
 <template>
   <div class="scroll" v-show="visible">
-    <IconButton icon="arrow" class="icon" @click="scrollTop" title="Наверх" />
+    <IconButton
+      icon="arrow"
+      class="icon-button"
+      @click="scrollTop"
+      title="Наверх"
+    />
   </div>
 </template>
 
@@ -47,8 +52,14 @@ window.addEventListener("scroll", handleScrollOptimised);
 </style>
 
 <style scoped>
-.icon >>> svg {
+.icon-button >>> svg {
   width: 17px;
   height: 17px;
+}
+
+.icon-button >>> .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

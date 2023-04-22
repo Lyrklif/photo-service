@@ -11,7 +11,7 @@ defineProps({
 
 <template>
   <ul class="unstyled-list list">
-    <li v-for="item in list" :key="item.id" class="list__item">
+    <li v-for="(item, index) in list" :key="item.id" class="list__item">
       <router-link
         :to="{ name: PAGE_NAMES.photo, params: { id: item.id } }"
         class="list__link"
@@ -21,7 +21,7 @@ defineProps({
           :src="item.urls.small"
           :srcset="`${item.urls.regular} 2x`"
           class="list__img"
-          lazy
+          :lazy="!!index"
         />
       </router-link>
     </li>
