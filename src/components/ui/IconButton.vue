@@ -21,7 +21,7 @@ const clickHandler = () => {
 </script>
 
 <template>
-  <AppButton class="icon-btn" @click="clickHandler">
+  <AppButton class="icon-btn" @click="clickHandler" :title="text">
     <span class="icon">
       <AppIcon :name="icon" />
     </span>

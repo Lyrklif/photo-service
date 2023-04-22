@@ -25,7 +25,6 @@ const { isLiked, likeProcess } = storeToRefs(store);
       class="like"
       :liked="isLiked"
       @click="store.likePhoto"
-      :disabled="likeProcess"
     />
   </AppHeader>
 </template>
