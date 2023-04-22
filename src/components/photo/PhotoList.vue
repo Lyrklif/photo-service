@@ -19,8 +19,8 @@ defineProps({
       >
         <AppPicture
           :alt="item.alt_description"
-          :src="item.urls.small"
-          :srcset="`${item.urls.regular} 2x`"
+          :src="`${item.urls.raw}&w=400&q=80&auto=compress,format`"
+          :srcset="`${item.urls.raw}&w=800&q=80&auto=compress,format 800w`"
           class="list__img"
           :lazy="!!index"
         />
@@ -79,7 +79,7 @@ defineProps({
     right: 0;
   }
 
-  @include md-up {
+  @include sm-up {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 30px;

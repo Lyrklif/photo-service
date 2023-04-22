@@ -3,8 +3,7 @@ import AppPicture from "../ui/AppPicture.vue";
 
 defineProps({
   alt: { type: String, required: true },
-  image: { type: String, required: true },
-  imageLarge: { type: String, required: true },
+  src: { type: String, required: true },
 });
 </script>
 
@@ -12,8 +11,21 @@ defineProps({
   <div class="bg-image-wp">
     <AppPicture
       :alt="alt"
-      :src="image"
-      :srcset="`${imageLarge} 2x`"
+      :src="`${src}&w=768&auto=compress,format`"
+      :source="[
+        {
+          srcset: `${src}&w=1080&auto=compress,format`,
+          media: '(min-width: 1080px)',
+        },
+        {
+          srcset: `${src}&w=1280&auto=compress,format`,
+          media: '(min-width: 1280px)',
+        },
+        {
+          srcset: `${src}&w=1920&auto=compress,format`,
+          media: '(min-width: 1920px)',
+        },
+      ]"
       class="bg-image"
       lazy
     />
