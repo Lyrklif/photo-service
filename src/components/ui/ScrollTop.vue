@@ -26,7 +26,7 @@ window.addEventListener("scroll", handleScrollOptimised);
 
 <template>
   <div class="scroll" v-show="visible">
-    <IconButton icon="arrow" class="icon" @click="scrollTop" />
+    <IconButton icon="arrow" class="icon" @click="scrollTop" title="Наверх" />
   </div>
 </template>
 

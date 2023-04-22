@@ -1,11 +1,55 @@
 import axios from "axios";
 import type { AxiosInstance } from "axios";
+import { useAuthStore } from "../stores/auth";
+import { getAuthCodeUrl } from "./auth";
+import { INVALID_ACCESS_TOKEN } from "../common/constants/errors";
+import { useProcessStore } from "../stores/process";
 
 const instance: AxiosInstance = axios.create({
   baseURL: "https://api.unsplash.com/",
-  params: {
-    client_id: import.meta.env.VITE_ACCESS_KEY,
+  headers: {
+    // token for public api
+    Authorization: `Client-ID ${import.meta.env.VITE_ACCESS_KEY}`,
   },
 });
+
+instance.interceptors.request.use(
+  (config) => {
+    const authStore = useAuthStore();
+    const processStore = useProcessStore();
+
+    if (authStore.accessToken) {
+      config.headers.Authorization = `Bearer ${authStore.accessToken}`;
+    }
+    processStore.setLoading(true);
+    processStore.setError(false);
+    return config;
+  },
+  (error) => {
+    const processStore = useProcessStore();
+    processStore.setLoading(false);
+    processStore.setError(error.response.data);
+    return Promise.reject(error);
+  }
+);
+
+instance.interceptors.response.use(
+  (response) => {
+    const processStore = useProcessStore();
+    processStore.setLoading(false);
+    processStore.setError(false);
+    return response;
+  },
+  async function (error) {
+    // const processStore = useProcessStore();
+    // processStore.setLoading(false);
+    // processStore.setError(error.response.data);
+
+    // TODO use refresh_token
+    // if (error.response.status === INVALID_ACCESS_TOKEN) {
+    // }
+    return Promise.reject(error);
+  }
+);
 
 export default instance;

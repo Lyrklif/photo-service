@@ -24,6 +24,7 @@ const changeHandler = () => {
 
 <template>
   <label class="input">
+    <slot name="before" />
     <input
       v-model="model"
       @input="changeHandler"

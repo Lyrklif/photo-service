@@ -1,54 +1,25 @@
 <script lang="ts" setup>
 import LogoHeader from "./LogoHeader.vue";
-import LikeButton from "../../photo/like-button/LikeButton.vue";
-import IconButton from "../../ui/IconButton.vue";
-import { computed } from "vue";
-import { useRoute } from "vue-router";
-import { PAGE_NAMES } from "../../../constants/router";
-import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
-import { usePhotoStore } from "../../../stores/photo";
 
-const route = useRoute();
-const store = usePhotoStore();
-
-const isMainPage = computed(() => {
-  return route.name === PAGE_NAMES.main;
-});
-
-const likeButtonType = computed(() => {
-  switch (route.name) {
-    case PAGE_NAMES.favorites:
-      return LIKE_BUTTON_VARIANTS.static;
-    case PAGE_NAMES.photo:
-      return LIKE_BUTTON_VARIANTS.button;
-    default:
-      return LIKE_BUTTON_VARIANTS.link;
-  }
+defineProps({
+  staticLogo: {
+    type: Boolean,
+    default: false,
+  },
+  big: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 
 <template>
-  <header class="header" :class="{ main: isMainPage }">
+  <header class="header" :class="{ big: big }">
     <div class="container">
-      <LogoHeader :is-static="isMainPage" :big="isMainPage" class="logo" />
+      <LogoHeader :is-static="staticLogo" :big="big" class="logo" />
 
       <div class="buttons-wrap">
-        <IconButton
-          v-if="!isMainPage"
-          :to="{ name: PAGE_NAMES.main }"
-          text="Поиск"
-          icon="search"
-          class="search"
-        />
-
-        <LikeButton
-          :type="likeButtonType"
-          text="Избранное"
-          :liked="store.isLiked"
-          class="like"
-          :class="{ main: isMainPage }"
-          @click="store.likePhoto"
-        />
+        <slot> </slot>
       </div>
     </div>
   </header>
@@ -69,7 +40,7 @@ const likeButtonType = computed(() => {
     height: 81px;
   }
 
-  &.main {
+  &.big {
     height: 70px;
     padding-top: 13px;
     padding-bottom: 13px;
@@ -88,11 +59,6 @@ const likeButtonType = computed(() => {
   justify-content: space-between;
 }
 
-.search {
-  @include md-up {
-    margin-right: 18px;
-  }
-}
 .logo {
   @include md-up {
     transform: translateY(4px);
@@ -104,15 +70,15 @@ const likeButtonType = computed(() => {
 
   @include md-up {
     font-size: 20px;
-    transform: translateX(6px);
+    transform: translateX(7px);
   }
 }
+</style>
 
-.like {
-  &.main {
-    @include lg-up {
-      font-size: 18px;
-    }
+<style scoped>
+@media (min-width: 768px) {
+  .buttons-wrap >>> .search {
+    margin-right: 18px;
   }
 }
 </style>

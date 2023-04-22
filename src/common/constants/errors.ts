@@ -1,0 +1,3 @@
+const INVALID_ACCESS_TOKEN = 401;
+
+export { INVALID_ACCESS_TOKEN };
