@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import AppLoader from "../components/ui/AppLoader.vue";
-import AppMessage from "../components/ui/AppMessage.vue";
 import PhotoPageHeader from "../components/page-content/photo/PhotoPageHeader.vue";
 import { useRoute } from "vue-router";
 import { usePhotoStore } from "../stores/photo";
@@ -21,6 +20,9 @@ onBeforeUnmount(() => controller.abort());
 const AsyncPhotoContend = defineAsyncComponent(
   () => import("../components/page-content/photo/PhotoContend.vue")
 );
+const AsyncAppMessage = defineAsyncComponent(
+  () => import("../components/ui/AppMessage.vue")
+);
 </script>
 
 <template>
@@ -28,7 +30,13 @@ const AsyncPhotoContend = defineAsyncComponent(
     <PhotoPageHeader />
 
     <AppLoader v-if="loading && !photo" />
-    <AppMessage v-else-if="error" :text="error" type="error" offset />
+    <component
+      v-else-if="error"
+      :text="error"
+      type="error"
+      :is="AsyncAppMessage"
+      offset
+    ></component>
     <component v-else-if="photo" :is="AsyncPhotoContend"></component>
   </div>
 </template>
