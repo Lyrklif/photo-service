@@ -2,8 +2,6 @@
 import { defineAsyncComponent, onBeforeUnmount } from "vue";
 import SearchPanel from "../components/search/SearchPanel.vue";
 import AppLoader from "../components/ui/AppLoader.vue";
-import ScrollTop from "../components/ui/ScrollTop.vue";
-import AppMessage from "../components/ui/AppMessage.vue";
 import MainHeader from "../components/page-content/main/MainHeader.vue";
 import { usePhotosStore } from "../stores/photos";
 import { storeToRefs } from "pinia";
@@ -26,6 +24,12 @@ const searchHandler = (text: string = "") => {
 const AsyncPhotoList = defineAsyncComponent(
   () => import("../components/photo/PhotoList.vue")
 );
+const AsyncScrollTop = defineAsyncComponent(
+  () => import("../components/ui/ScrollTop.vue")
+);
+const AsyncAppMessage = defineAsyncComponent(
+  () => import("../components/ui/AppMessage.vue")
+);
 </script>
 
 <template>
@@ -41,11 +45,16 @@ const AsyncPhotoList = defineAsyncComponent(
 
       <div class="container wrapper">
         <AppLoader v-if="loading" />
-        <AppMessage v-else-if="error" :text="error" type="error" />
+        <component
+          v-else-if="error"
+          :text="error"
+          type="error"
+          :is="AsyncAppMessage"
+        ></component>
         <component v-else :is="AsyncPhotoList" :list="list"></component>
       </div>
     </main>
-    <ScrollTop />
+    <component :is="AsyncScrollTop"></component>
   </div>
 </template>
 

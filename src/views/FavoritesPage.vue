@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import AppLoader from "../components/ui/AppLoader.vue";
-import AppMessage from "../components/ui/AppMessage.vue";
 import FavoriteHeader from "../components/page-content/favorite/FavoriteHeader.vue";
 import { useFavoritesStore } from "../stores/favorites";
 import { storeToRefs } from "pinia";
@@ -19,6 +18,9 @@ onBeforeUnmount(() => controller.abort());
 const AsyncPhotoList = defineAsyncComponent(
   () => import("../components/photo/PhotoList.vue")
 );
+const AsyncAppMessage = defineAsyncComponent(
+  () => import("../components/ui/AppMessage.vue")
+);
 </script>
 
 <template>
@@ -32,7 +34,13 @@ const AsyncPhotoList = defineAsyncComponent(
 
       <div class="container">
         <AppLoader v-if="loading" />
-        <AppMessage v-else-if="error" :text="error" type="error" offset />
+        <component
+          v-else-if="error"
+          :text="error"
+          type="error"
+          :is="AsyncAppMessage"
+          offset
+        ></component>
         <component v-else :is="AsyncPhotoList" :list="list"></component>
       </div>
     </main>
