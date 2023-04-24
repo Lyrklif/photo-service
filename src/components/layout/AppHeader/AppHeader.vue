@@ -41,10 +41,6 @@ defineProps({
   }
 
   &.big {
-    height: 70px;
-    padding-top: 13px;
-    padding-bottom: 13px;
-
     @include md-up {
       height: auto;
       padding-top: 33px;
