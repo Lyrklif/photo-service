@@ -73,8 +73,12 @@ defineProps({
 
 <style scoped>
 @media (min-width: 768px) {
-  .buttons-wrap >>> .search {
+  .buttons-wrap >>> .btn {
     margin-right: 18px;
+  }
+
+  .buttons-wrap >>> .btn:last-child {
+    margin-right: 0;
   }
 }
 </style>
