@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import SearchBackground from "./SearchBackground.vue";
-import SearchForm from "./SearchForm.vue";
+import SearchBackground from "./children/SearchBackground.vue";
+import SearchForm from "../../molecules/SearchForm.vue";
 
 const emits = defineEmits(["submit"]);
 
@@ -19,8 +19,8 @@ const submitHandler = (text: string) => {
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/colors";
-@import "../../assets/styles/breakpoints";
+@import "../../../assets/styles/colors";
+@import "../../../assets/styles/breakpoints";
 
 .search-panel {
   padding-top: 80px;

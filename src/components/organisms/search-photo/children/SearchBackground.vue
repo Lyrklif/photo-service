@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import AppPicture from "../ui/AppPicture.vue";
+import AppPicture from "../../../atoms/AppPicture.vue";
 
 const source = [
   {

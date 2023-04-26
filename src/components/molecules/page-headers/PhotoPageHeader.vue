@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import AppHeader from "../../layout/AppHeader/AppHeader.vue";
-import IconButton from "../../ui/IconButton.vue";
-import LikeButton from "../../photo/like-button/LikeButton.vue";
-import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
+import AppHeader from "../../../layout/AppHeader.vue";
+import IconButton from "../IconButton.vue";
+import LikeButton from "../like-button/LikeButton.vue";
+import { LIKE_BUTTON_VARIANTS } from "../like-button/types";
 import { usePhotoStore } from "../../../stores/photo";
 import { storeToRefs } from "pinia";
 import { PAGE_NAMES } from "../../../common/constants/router";

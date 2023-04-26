@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import AppIcon from "../../ui/AppIcon.vue";
+import AppIcon from "../atoms/AppIcon.vue";
 import { computed } from "vue";
-import { PAGE_NAMES } from "../../../common/constants/router";
+import { PAGE_NAMES } from "../../common/constants/router";
 
 const props = defineProps({
   isStatic: {
@@ -29,7 +29,7 @@ const logo = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/breakpoints";
+@import "../../assets/styles/breakpoints";
 
 .logo {
   display: block;

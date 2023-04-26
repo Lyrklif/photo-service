@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import AppHeader from "../../layout/AppHeader/AppHeader.vue";
-import LikeButton from "../../photo/like-button/LikeButton.vue";
-import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
+import AppHeader from "../../../layout/AppHeader.vue";
+import LikeButton from "../like-button/LikeButton.vue";
+import { LIKE_BUTTON_VARIANTS } from "../like-button/types";
 </script>
 
 <template>

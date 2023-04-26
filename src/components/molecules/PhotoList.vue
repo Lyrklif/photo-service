@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { PropType } from "vue";
 import type { IPhoto } from "../../api";
-import AppPicture from "../ui/AppPicture.vue";
+import AppPicture from "../atoms/AppPicture.vue";
 import { PAGE_NAMES } from "../../common/constants/router";
 
 defineProps({

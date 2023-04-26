@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import PhotoHeader from "../../photo/header/PhotoHeader.vue";
-import PhotoFull from "../../photo/PhotoFull.vue";
+import PhotoHeader from "./children/PhotoHeader.vue";
+import FullPhoto from "../../molecules/FullPhoto.vue";
 import { usePhotoStore } from "../../../stores/photo";
 import { storeToRefs } from "pinia";
 import useDeviceDetect from "../../../mixins/useDeviceDetect.vue";
@@ -11,7 +11,7 @@ const { photo, isLiked } = storeToRefs(store);
 const { device } = useDeviceDetect();
 
 const AsyncPhotoBackground = defineAsyncComponent(
-  () => import("../../photo/PhotoBackground.vue")
+  () => import("./children/PhotoBackground.vue")
 );
 </script>
 
@@ -29,7 +29,7 @@ const AsyncPhotoBackground = defineAsyncComponent(
     />
 
     <div class="container">
-      <PhotoFull :src="photo.urls.raw" :alt="photo.alt_description" />
+      <FullPhoto :src="photo.urls.raw" :alt="photo.alt_description" />
     </div>
 
     <component

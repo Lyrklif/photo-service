@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { defineAsyncComponent, onBeforeUnmount } from "vue";
-import SearchPanel from "../components/search/SearchPanel.vue";
-import AppLoader from "../components/ui/AppLoader.vue";
-import MainHeader from "../components/page-content/main/MainHeader.vue";
+import SearchPanel from "../components/organisms/search-photo/SearchPhoto.vue";
+import AppLoader from "../components/molecules/AppLoader.vue";
+import MainPageHeader from "../components/molecules/page-headers/MainPageHeader.vue";
 import { usePhotosStore } from "../stores/photos";
 import { storeToRefs } from "pinia";
 import { useProcessStore } from "../stores/process";
@@ -22,19 +22,19 @@ const searchHandler = (text: string = "") => {
 };
 
 const AsyncPhotoList = defineAsyncComponent(
-  () => import("../components/photo/PhotoList.vue")
+  () => import("../components/molecules/PhotoList.vue")
 );
 const AsyncScrollTop = defineAsyncComponent(
-  () => import("../components/ui/ScrollTop.vue")
+  () => import("../components/molecules/ScrollTop.vue")
 );
 const AsyncAppMessage = defineAsyncComponent(
-  () => import("../components/ui/AppMessage.vue")
+  () => import("../components/atoms/AppMessage.vue")
 );
 </script>
 
 <template>
   <div>
-    <MainHeader />
+    <MainPageHeader />
 
     <main>
       <header class="visually-hidden">

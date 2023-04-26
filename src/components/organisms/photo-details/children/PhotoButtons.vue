@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import IconButton from "../../ui/IconButton.vue";
-import LikeButton from "../../photo/like-button/LikeButton.vue";
-import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
-import { usePhotoStore } from "../../../stores/photo";
+import IconButton from "../../../molecules/IconButton.vue";
+import LikeButton from "../../../molecules/like-button/LikeButton.vue";
+import { LIKE_BUTTON_VARIANTS } from "../../../molecules/like-button/types";
+import { usePhotoStore } from "../../../../stores/photo";
 import { storeToRefs } from "pinia";
 
 defineProps({
@@ -37,10 +37,10 @@ const { isLiked } = storeToRefs(store);
 </template>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/breakpoints";
-@import "../../../assets/styles/colors";
-@import "../../../assets/styles/decarations";
-@import "../../../assets/styles/shadow";
+@import "../../../../assets/styles/breakpoints";
+@import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/decarations";
+@import "../../../../assets/styles/shadow";
 
 .button {
   box-shadow: $box-shadow-light;

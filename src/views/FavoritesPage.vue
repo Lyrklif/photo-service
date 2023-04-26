@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import AppLoader from "../components/ui/AppLoader.vue";
-import FavoriteHeader from "../components/page-content/favorite/FavoriteHeader.vue";
+import AppLoader from "../components/molecules/AppLoader.vue";
+import FavoritePageHeader from "../components/molecules/page-headers/FavoritePageHeader.vue";
 import { useFavoritesStore } from "../stores/favorites";
 import { storeToRefs } from "pinia";
 import { useProcessStore } from "../stores/process";
@@ -16,16 +16,16 @@ store.loadFavorites();
 onBeforeUnmount(() => controller.abort());
 
 const AsyncPhotoList = defineAsyncComponent(
-  () => import("../components/photo/PhotoList.vue")
+  () => import("../components/molecules/PhotoList.vue")
 );
 const AsyncAppMessage = defineAsyncComponent(
-  () => import("../components/ui/AppMessage.vue")
+  () => import("../components/atoms/AppMessage.vue")
 );
 </script>
 
 <template>
   <div>
-    <FavoriteHeader />
+    <FavoritePageHeader />
 
     <main class="page">
       <header class="favorite-header">

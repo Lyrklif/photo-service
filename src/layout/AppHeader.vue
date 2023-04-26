@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import LogoHeader from "./LogoHeader.vue";
+import AppLogo from "../components/molecules/AppLogo.vue";
 
 defineProps({
   staticLogo: {
@@ -16,7 +16,7 @@ defineProps({
 <template>
   <header class="header" :class="{ big: big }">
     <div class="container">
-      <LogoHeader :is-static="staticLogo" :big="big" class="logo" />
+      <AppLogo :is-static="staticLogo" :big="big" class="logo" />
 
       <div class="buttons-wrap">
         <slot> </slot>
@@ -26,8 +26,8 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/colors";
-@import "../../../assets/styles/breakpoints";
+@import "../assets/styles/colors";
+@import "../assets/styles/breakpoints";
 
 .header {
   background-color: $dark;

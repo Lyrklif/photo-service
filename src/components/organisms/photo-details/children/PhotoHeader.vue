@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import PhotoAuthor from "./PhotoAuthor.vue";
+import PhotoAuthor from "../../../molecules/PhotoAuthor.vue";
 import PhotoButtons from "./PhotoButtons.vue";
 
 defineProps({
@@ -33,7 +33,7 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/breakpoints";
+@import "../../../../assets/styles/breakpoints";
 
 .header {
   display: flex;
