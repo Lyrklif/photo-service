@@ -9,7 +9,6 @@ defineProps({
   image: { type: String, required: true },
   imageLarge: { type: String, required: true },
   download: { type: String, required: true },
-  liked: { type: Boolean, required: true },
 });
 </script>
 
@@ -27,7 +26,6 @@ defineProps({
       class="buttons"
       :downloadName="title"
       :downloadUrl="download"
-      :liked="liked"
     />
   </header>
 </template>

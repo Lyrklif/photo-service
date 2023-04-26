@@ -5,4 +5,10 @@ const getUrlParam = (key: string): string | null => {
   return urlParams.get(key);
 };
 
-export { getUrlParam };
+const getURLWithoutParam = (key: string): string => {
+  const urlObj = new URL(window.location.href);
+  urlObj.searchParams.delete(key);
+  return urlObj.toString();
+};
+
+export { getUrlParam, getURLWithoutParam };

@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import AppHeader from "../../../layout/AppHeader.vue";
 import IconButton from "../IconButton.vue";
-import LikeButton from "../like-button/LikeButton.vue";
-import { LIKE_BUTTON_VARIANTS } from "../like-button/types";
 import { PAGE_NAMES } from "../../../common/constants/router";
 </script>
 
@@ -14,10 +12,6 @@ import { PAGE_NAMES } from "../../../common/constants/router";
       icon="search"
       class="search"
     />
-    <LikeButton
-      :type="LIKE_BUTTON_VARIANTS.static"
-      text="Избранное"
-      class="like"
-    />
+    <IconButton customTag="div" text="Избранное" icon="heart" class="like" />
   </AppHeader>
 </template>

@@ -5,14 +5,19 @@ import { useFavoritesStore } from "../stores/favorites";
 import { storeToRefs } from "pinia";
 import { useProcessStore } from "../stores/process";
 import { defineAsyncComponent, onBeforeUnmount } from "vue";
+import { useUserStore } from "../stores/user";
 
 const store = useFavoritesStore();
-const processStore = useProcessStore();
-const { loading, error } = storeToRefs(processStore);
 const { list } = storeToRefs(store);
 
+const userStore = useUserStore();
+const { username } = storeToRefs(userStore);
+
+const processStore = useProcessStore();
+const { loading, error } = storeToRefs(processStore);
+
 const controller = new AbortController();
-store.loadFavorites();
+if (username.value) store.loadFavorites(username.value);
 onBeforeUnmount(() => controller.abort());
 
 const AsyncPhotoList = defineAsyncComponent(

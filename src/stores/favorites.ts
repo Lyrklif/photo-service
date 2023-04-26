@@ -5,7 +5,7 @@ import type { IPhoto } from "../api";
 
 export interface StoreInterface {
   list: Ref<Array<IPhoto>>;
-  loadFavorites: () => void;
+  loadFavorites: (userName: string) => void;
 }
 
 export const useFavoritesStore = defineStore(
@@ -13,9 +13,9 @@ export const useFavoritesStore = defineStore(
   (): StoreInterface => {
     const list = ref<Array<IPhoto>>([]);
 
-    const loadFavorites = async (): Promise<void> => {
+    const loadFavorites = async (userName: string): Promise<void> => {
       try {
-        const res = await API.getLikedPhotos();
+        const res = await API.getLikedPhotos(userName);
         list.value = res.data;
       } catch (e: any) {
         console.error(e.response);

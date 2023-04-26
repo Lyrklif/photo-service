@@ -1,28 +1,16 @@
 <script lang="ts" setup>
 import IconButton from "../../../molecules/IconButton.vue";
 import LikeButton from "../../../molecules/like-button/LikeButton.vue";
-import { LIKE_BUTTON_VARIANTS } from "../../../molecules/like-button/types";
-import { usePhotoStore } from "../../../../stores/photo";
-import { storeToRefs } from "pinia";
 
 defineProps({
   downloadName: { type: String, required: true },
   downloadUrl: { type: String, required: true },
-  liked: { type: Boolean, default: false },
 });
-
-const store = usePhotoStore();
-const { isLiked } = storeToRefs(store);
 </script>
 
 <template>
   <div class="buttons">
-    <LikeButton
-      class="button like"
-      :liked="isLiked"
-      :type="LIKE_BUTTON_VARIANTS.button"
-      @click="store.likePhoto"
-    />
+    <LikeButton class="button like" />
 
     <IconButton
       class="button download"
@@ -30,6 +18,7 @@ const { isLiked } = storeToRefs(store);
       text="Downloand"
       :download="downloadName"
       :href="downloadUrl"
+      title="Открыть изображение в новой вкладке для скачивания оригинала"
       customTag="a"
       target="_blank"
     />
@@ -58,7 +47,6 @@ const { isLiked } = storeToRefs(store);
 }
 
 .like {
-  color: $dark;
   background-color: $white;
 }
 

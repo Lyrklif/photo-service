@@ -1,72 +1,52 @@
 <script lang="ts" setup>
 import IconButton from "../IconButton.vue";
-import { computed, PropType } from "vue";
-import { PAGE_NAMES } from "../../../common/constants/router";
-import type { TLikeButton } from "./types";
-import { LIKE_BUTTON_VARIANTS } from "./types";
+import { computed } from "vue";
+import { storeToRefs } from "pinia";
+import { usePhotoStore } from "../../../stores/photo";
+import { useAuthStore } from "../../../stores/auth";
 
 const props = defineProps({
-  liked: { type: Boolean, default: false },
-  text: { type: String, default: "" },
-  type: {
-    type: String as PropType<TLikeButton>,
-    default: LIKE_BUTTON_VARIANTS.link,
-  },
+  showText: { type: Boolean, default: false },
 });
 
-const favorite = computed(() => {
-  switch (props.type) {
-    case LIKE_BUTTON_VARIANTS.static:
-      return {
-        disabled: true,
-        customTag: "div",
-        to: undefined,
-        button: false,
-      };
-    case LIKE_BUTTON_VARIANTS.button:
-      return {
-        disabled: false,
-        customTag: undefined,
-        to: undefined,
-        button: true,
-      };
-    default:
-      return {
-        disabled: false,
-        customTag: undefined,
-        to: { name: PAGE_NAMES.favorites },
-        button: false,
-      };
-  }
-});
+const store = usePhotoStore();
+const { likePhoto } = store;
+const { isLiked, likeProcess } = storeToRefs(store);
+
+const storeAuth = useAuthStore();
+const { redirectAuth } = storeAuth;
+const { isAuth } = storeToRefs(storeAuth);
 
 const iconHeart = computed(() => {
-  return props.liked ? "heart-fill" : "heart";
+  return isLiked.value ? "heart-fill" : "heart";
+});
+const text = computed(() => {
+  return props.showText ? "Избранное" : "";
 });
 
-const emits = defineEmits(["click"]);
+const clickHandler = () => {
+  if (likeProcess.value) return;
 
-const favoriteClickHandler = (event: PointerEvent | MouseEvent) => {
-  if (favorite.value.disabled || !favorite.value.button) return;
-  emits("click", event);
+  if (isAuth.value) likePhoto();
+  else redirectAuth();
 };
 </script>
 
 <template>
   <IconButton
-    :customTag="favorite.customTag"
-    :to="favorite.to"
     :text="text"
+    title="Избранное"
     :icon="iconHeart"
-    :class="{ fill: liked }"
-    @click="favoriteClickHandler"
+    :class="['like-button', isLiked ? 'fill' : '']"
+    :disabled="likeProcess"
+    @click="clickHandler"
   />
 </template>
 
 <style lang="scss" scoped>
 @import "../../../assets/styles/colors";
 
-.like {
+.like-button {
   &.fill {
     color: $primary;
   }

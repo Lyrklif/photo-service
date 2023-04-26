@@ -1,15 +1,17 @@
 import axios from "axios";
 import type { AxiosInstance } from "axios";
 import { useAuthStore } from "../stores/auth";
-import { getAuthCodeUrl } from "./auth";
 import { INVALID_ACCESS_TOKEN } from "../common/constants/errors";
 import { useProcessStore } from "../stores/process";
+import { useUserStore } from "../stores/user";
+
+const DEFAULT_AUTH_HEADER = `Client-ID ${import.meta.env.VITE_ACCESS_KEY}`;
 
 const instance: AxiosInstance = axios.create({
   baseURL: "https://api.unsplash.com/",
   headers: {
     // token for public api
-    Authorization: `Client-ID ${import.meta.env.VITE_ACCESS_KEY}`,
+    Authorization: DEFAULT_AUTH_HEADER,
   },
 });
 
@@ -42,12 +44,16 @@ instance.interceptors.response.use(
   },
   async function (error) {
     const processStore = useProcessStore();
+    const userStore = useUserStore();
+    const authStore = useAuthStore();
     processStore.setLoading(false);
     processStore.setError(error.response.data);
 
-    // TODO use refresh_token
-    // if (error.response.status === INVALID_ACCESS_TOKEN) {
-    // }
+    if (error.response.status === INVALID_ACCESS_TOKEN) {
+      userStore.username = "";
+      authStore.accessToken = "";
+      instance.defaults.headers.post["Authorization"] = DEFAULT_AUTH_HEADER;
+    }
     return Promise.reject(error);
   }
 );

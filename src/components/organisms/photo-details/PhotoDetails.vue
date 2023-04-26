@@ -7,7 +7,7 @@ import useDeviceDetect from "../../../mixins/useDeviceDetect.vue";
 import { defineAsyncComponent } from "vue";
 
 const store = usePhotoStore();
-const { photo, isLiked } = storeToRefs(store);
+const { photo } = storeToRefs(store);
 const { device } = useDeviceDetect();
 
 const AsyncPhotoBackground = defineAsyncComponent(
@@ -24,7 +24,6 @@ const AsyncPhotoBackground = defineAsyncComponent(
       :image="photo.user.profile_image.medium"
       :imageLarge="photo.user.profile_image.large"
       :download="photo.links.download"
-      :liked="isLiked"
       class="photo-header"
     />
 
