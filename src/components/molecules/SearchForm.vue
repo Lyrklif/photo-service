@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import AppInput from "../ui/AppInput.vue";
-import IconButton from "../ui/IconButton.vue";
+import AppInput from "../atoms/AppInput.vue";
+import IconButton from "./IconButton.vue";
 
 const search = ref("");
 const emits = defineEmits(["submit"]);

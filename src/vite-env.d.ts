@@ -7,5 +7,4 @@ interface ImportMeta {
 interface ImportMetaEnv {
   readonly VITE_ACCESS_KEY: string;
   readonly VITE_SECRET_KEY: string;
-  readonly VITE_USER_NAME: string;
 }

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import AppLoader from "../components/ui/AppLoader.vue";
-import PhotoPageHeader from "../components/page-content/photo/PhotoPageHeader.vue";
+import AppLoader from "../components/molecules/AppLoader.vue";
+import PhotoPageHeader from "../components/molecules/page-headers/PhotoPageHeader.vue";
 import { useRoute } from "vue-router";
 import { usePhotoStore } from "../stores/photo";
 import { storeToRefs } from "pinia";
@@ -18,10 +18,10 @@ store.loadPhotoData(`${route.params.id}`);
 onBeforeUnmount(() => controller.abort());
 
 const AsyncPhotoContend = defineAsyncComponent(
-  () => import("../components/page-content/photo/PhotoContend.vue")
+  () => import("../components/organisms/photo-details/PhotoDetails.vue")
 );
 const AsyncAppMessage = defineAsyncComponent(
-  () => import("../components/ui/AppMessage.vue")
+  () => import("../components/atoms/AppMessage.vue")
 );
 </script>
 

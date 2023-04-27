@@ -1,14 +1,15 @@
 <script lang="ts" setup>
-import AppHeader from "../../layout/AppHeader/AppHeader.vue";
-import LikeButton from "../../photo/like-button/LikeButton.vue";
-import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
+import AppHeader from "../../../layout/AppHeader.vue";
+import IconButton from "../IconButton.vue";
+import { PAGE_NAMES } from "../../../common/constants/router";
 </script>
 
 <template>
   <AppHeader static-logo big>
-    <LikeButton
-      :type="LIKE_BUTTON_VARIANTS.link"
+    <IconButton
+      :to="{ name: PAGE_NAMES.favorites }"
       text="Избранное"
+      icon="heart"
       class="like"
     />
   </AppHeader>

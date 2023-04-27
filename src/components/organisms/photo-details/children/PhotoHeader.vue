@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import PhotoAuthor from "./PhotoAuthor.vue";
+import PhotoAuthor from "../../../molecules/PhotoAuthor.vue";
 import PhotoButtons from "./PhotoButtons.vue";
 
 defineProps({
@@ -9,7 +9,6 @@ defineProps({
   image: { type: String, required: true },
   imageLarge: { type: String, required: true },
   download: { type: String, required: true },
-  liked: { type: Boolean, required: true },
 });
 </script>
 
@@ -27,13 +26,12 @@ defineProps({
       class="buttons"
       :downloadName="title"
       :downloadUrl="download"
-      :liked="liked"
     />
   </header>
 </template>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/breakpoints";
+@import "../../../../assets/styles/breakpoints";
 
 .header {
   display: flex;

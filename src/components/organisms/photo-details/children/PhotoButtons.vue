@@ -1,28 +1,16 @@
 <script lang="ts" setup>
-import IconButton from "../../ui/IconButton.vue";
-import LikeButton from "../../photo/like-button/LikeButton.vue";
-import { LIKE_BUTTON_VARIANTS } from "../../photo/like-button/types";
-import { usePhotoStore } from "../../../stores/photo";
-import { storeToRefs } from "pinia";
+import IconButton from "../../../molecules/IconButton.vue";
+import LikeButton from "../../../molecules/like-button/LikeButton.vue";
 
 defineProps({
   downloadName: { type: String, required: true },
   downloadUrl: { type: String, required: true },
-  liked: { type: Boolean, default: false },
 });
-
-const store = usePhotoStore();
-const { isLiked } = storeToRefs(store);
 </script>
 
 <template>
   <div class="buttons">
-    <LikeButton
-      class="button like"
-      :liked="isLiked"
-      :type="LIKE_BUTTON_VARIANTS.button"
-      @click="store.likePhoto"
-    />
+    <LikeButton class="button like" />
 
     <IconButton
       class="button download"
@@ -30,6 +18,7 @@ const { isLiked } = storeToRefs(store);
       text="Downloand"
       :download="downloadName"
       :href="downloadUrl"
+      title="Открыть изображение в новой вкладке для скачивания оригинала"
       customTag="a"
       target="_blank"
     />
@@ -37,10 +26,10 @@ const { isLiked } = storeToRefs(store);
 </template>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/breakpoints";
-@import "../../../assets/styles/colors";
-@import "../../../assets/styles/decarations";
-@import "../../../assets/styles/shadow";
+@import "../../../../assets/styles/breakpoints";
+@import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/decarations";
+@import "../../../../assets/styles/shadow";
 
 .button {
   box-shadow: $box-shadow-light;
@@ -58,7 +47,6 @@ const { isLiked } = storeToRefs(store);
 }
 
 .like {
-  color: $dark;
   background-color: $white;
 }
 

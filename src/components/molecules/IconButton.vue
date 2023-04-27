@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import AppButton from "./AppButton.vue";
-import AppIcon from "./AppIcon.vue";
+import AppButton from "../atoms/AppButton.vue";
+import AppIcon from "../atoms/AppIcon.vue";
 
 defineProps({
   icon: {

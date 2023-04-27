@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { PropType } from "vue";
 import type { IPhoto } from "../../api";
-import AppPicture from "../ui/AppPicture.vue";
+import AppPicture from "../atoms/AppPicture.vue";
 import { PAGE_NAMES } from "../../common/constants/router";
 
 defineProps({
@@ -19,7 +19,13 @@ defineProps({
       >
         <AppPicture
           :alt="item.alt_description"
-          :src="`${item.urls.raw}&w=400&auto=compress,format`"
+          :src="`${item.urls.raw}&w=400&h=372&fit=crop&auto=compress,format`"
+          :source="[
+            {
+              srcset: `${item.urls.raw}&w=473&h=440&fit=crop&auto=compress,format`,
+              media: '(min-width: 1920px)',
+            },
+          ]"
           class="list__img"
           :lazy="!!index"
         />

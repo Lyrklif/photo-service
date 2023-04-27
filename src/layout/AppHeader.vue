@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import LogoHeader from "./LogoHeader.vue";
+import AppLogo from "../components/molecules/AppLogo.vue";
 
 defineProps({
   staticLogo: {
@@ -16,7 +16,7 @@ defineProps({
 <template>
   <header class="header" :class="{ big: big }">
     <div class="container">
-      <LogoHeader :is-static="staticLogo" :big="big" class="logo" />
+      <AppLogo :is-static="staticLogo" :big="big" class="logo" />
 
       <div class="buttons-wrap">
         <slot> </slot>
@@ -26,8 +26,8 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import "../../../assets/styles/colors";
-@import "../../../assets/styles/breakpoints";
+@import "../assets/styles/colors";
+@import "../assets/styles/breakpoints";
 
 .header {
   background-color: $dark;
@@ -41,10 +41,6 @@ defineProps({
   }
 
   &.big {
-    height: 70px;
-    padding-top: 13px;
-    padding-bottom: 13px;
-
     @include md-up {
       height: auto;
       padding-top: 33px;
@@ -77,8 +73,12 @@ defineProps({
 
 <style scoped>
 @media (min-width: 768px) {
-  .buttons-wrap >>> .search {
+  .buttons-wrap >>> .btn {
     margin-right: 18px;
+  }
+
+  .buttons-wrap >>> .btn:last-child {
+    margin-right: 0;
   }
 }
 </style>

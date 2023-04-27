@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import AppPicture from "../ui/AppPicture.vue";
+import AppPicture from "../../../atoms/AppPicture.vue";
 
 defineProps({
   alt: { type: String, required: true },
@@ -33,9 +33,9 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import "../../assets/styles/breakpoints";
-@import "../../assets/styles/colors";
-@import "../../assets/styles/decarations";
+@import "../../../../assets/styles/breakpoints";
+@import "../../../../assets/styles/colors";
+@import "../../../../assets/styles/decarations";
 
 .bg-image-wp {
   display: none;
