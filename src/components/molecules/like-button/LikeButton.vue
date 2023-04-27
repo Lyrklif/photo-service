@@ -21,7 +21,7 @@ const iconHeart = computed(() => {
   return isLiked.value ? "heart-fill" : "heart";
 });
 const text = computed(() => {
-  return props.showText ? "Избранное" : "";
+  return props.showText ? "Favorites" : "";
 });
 
 const clickHandler = () => {
@@ -35,7 +35,7 @@ const clickHandler = () => {
 <template>
   <IconButton
     :text="text"
-    title="Избранное"
+    title="Like"
     :icon="iconHeart"
     :class="['like-button', isLiked ? 'fill' : '']"
     :disabled="likeProcess"

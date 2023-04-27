@@ -8,7 +8,7 @@ import { PAGE_NAMES } from "../../../common/constants/router";
   <AppHeader static-logo big>
     <IconButton
       :to="{ name: PAGE_NAMES.favorites }"
-      text="Избранное"
+      text="Favorites"
       icon="heart"
       class="like"
     />

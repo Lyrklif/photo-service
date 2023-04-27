@@ -8,10 +8,10 @@ import { PAGE_NAMES } from "../../../common/constants/router";
   <AppHeader>
     <IconButton
       :to="{ name: PAGE_NAMES.main }"
-      text="Поиск"
+      text="Search"
       icon="search"
       class="search"
     />
-    <IconButton customTag="div" text="Избранное" icon="heart" class="like" />
+    <IconButton customTag="div" text="Favorites" icon="heart" class="like" />
   </AppHeader>
 </template>

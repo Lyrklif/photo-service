@@ -14,7 +14,7 @@ const source = [
     class="bg-image"
     :source="source"
     src="images/background.webp"
-    alt="'Звездная ночь' Винсента Ван Гога"
+    alt="Vincent van Gogh's 'The Starry Night'"
   />
 </template>
 

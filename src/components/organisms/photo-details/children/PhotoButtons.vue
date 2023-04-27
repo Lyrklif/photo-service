@@ -15,10 +15,10 @@ defineProps({
     <IconButton
       class="button download"
       icon="download"
-      text="Downloand"
+      text="Download"
       :download="downloadName"
       :href="downloadUrl"
-      title="Открыть изображение в новой вкладке для скачивания оригинала"
+      title="Open the image in a new tab to download the original"
       customTag="a"
       target="_blank"
     />
