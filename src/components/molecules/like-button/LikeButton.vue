@@ -35,7 +35,7 @@ const clickHandler = () => {
 <template>
   <IconButton
     :text="text"
-    title="Favorites"
+    title="Like"
     :icon="iconHeart"
     :class="['like-button', isLiked ? 'fill' : '']"
     :disabled="likeProcess"

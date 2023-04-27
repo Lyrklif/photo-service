@@ -12,6 +12,6 @@ import { PAGE_NAMES } from "../../../common/constants/router";
       icon="search"
       class="search"
     />
-    <IconButton customTag="div" text="Избранное" icon="heart" class="like" />
+    <IconButton customTag="div" text="Favorites" icon="heart" class="like" />
   </AppHeader>
 </template>
