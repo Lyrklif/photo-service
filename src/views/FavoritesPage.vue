@@ -34,7 +34,7 @@ const AsyncAppMessage = defineAsyncComponent(
 
     <main class="page">
       <header class="favorite-header">
-        <h1 class="title">Избранное</h1>
+        <h1 class="title">Favorites</h1>
       </header>
 
       <div class="container">

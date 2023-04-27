@@ -9,7 +9,7 @@ import { PAGE_NAMES } from "../../../common/constants/router";
   <AppHeader>
     <IconButton
       :to="{ name: PAGE_NAMES.main }"
-      text="Поиск"
+      text="Search"
       icon="search"
       class="search"
     />

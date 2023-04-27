@@ -30,7 +30,7 @@ window.addEventListener("scroll", handleScrollOptimised);
       icon="arrow"
       class="icon-button"
       @click="scrollTop"
-      title="Наверх"
+      title="Go to top"
     />
   </div>
 </template>
