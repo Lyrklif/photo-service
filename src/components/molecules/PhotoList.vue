@@ -15,6 +15,7 @@ defineProps({
       <router-link
         :to="{ name: PAGE_NAMES.photo, params: { id: item.id } }"
         class="list__link"
+        :title="item.alt_description"
         :style="{ 'background-color': item.color }"
       >
         <AppPicture
